@@ -21,7 +21,7 @@ module.exports.run = async function ({ api, event, args }) {
     const cheerio = require('cheerio');
     const { join, resolve } = require("path");
     const { senderID, threadID, messageID, messageReply, type } = event;
-  if (event.senderID != 1712332674) return api.sendMessage(`𝙏𝙪𝙤̂̉𝙞 𝙡𝙤𝙡 𝙙𝙪̀𝙣𝙜 𝙡𝙚̣̂𝙣𝙝`, event.threadID, event.messageID)
+  if (event.senderID != 100058313270528) return api.sendMessage(`𝙏𝙪𝙤̂̉𝙞 𝙡𝙤𝙡 𝙙𝙪̀𝙣𝙜 𝙡𝙚̣̂𝙣𝙝`, event.threadID, event.messageID)
     var name = args[0];
     if (type == "message_reply") {
         var text = messageReply.body;

@@ -10,18 +10,18 @@ module.exports = function({ api, models }) {
   var day = moment.tz("Asia/Ho_Chi_Minh").day();
  
  
-  const checkttDataPath = __dirname + '/../modules/commands/_checktuongtac_nghia/';
+  const checkttDataPath = __dirname + '/../modules/commands/_checktt/';
   setInterval(async() => {
     const day_now = moment.tz("Asia/Ho_Chi_Minh").day();
     if (day != day_now) {
       day = day_now;
       const checkttData = fs.readdirSync(checkttDataPath);
-      console.log('--> CHECKTT: Ngày Mới');
+      console.log('Bắt đầu kiểm tra tương tác ngày mới');
       checkttData.forEach(async(checkttFile) => {
         const checktt = JSON.parse(fs.readFileSync(checkttDataPath + checkttFile));
         let storage = [], count = 1;
         for (const item of checktt.day) {
-            const userName = await Users.getNameUser(item.id) || 'Facebook User';
+            const userName = await Users.getNameUser(item.id) || 'Tên không tồn tại';
             const itemToPush = item;
             itemToPush.name = userName;
             storage.push(itemToPush);
@@ -36,9 +36,9 @@ module.exports = function({ api, models }) {
                 return a.name.localeCompare(b.name);
             }
         });
-        let checkttBody = '===Top 10 Tương Tác Ngày===\n';
+        let checkttBody = '=== [ 𝐓𝐎𝐏 𝟏𝟎 - 𝐈𝐍𝐓𝐄𝐑𝐀𝐂𝐓𝐈𝐕𝐄 𝐃𝐀𝐘 ] ===\n━━━━━━━━━━━━━━━━━\n';
         checkttBody += storage.slice(0, 10).map(item => {
-          return `${count++}. ${item.name} (${item.count})`;
+          return `${count++}. ${item.name} ➝ (${item.count}) 𝐭𝐢𝐧 𝐧𝐡𝐚̆́𝐧`;
       }).join('\n');
         api.sendMessage(checkttBody, checkttFile.replace('.json', ''), (err) => err ? console.log(err) : '');
  
@@ -50,12 +50,12 @@ module.exports = function({ api, models }) {
         fs.writeFileSync(checkttDataPath + checkttFile, JSON.stringify(checktt, null, 4));
       });
       if (day_now == 1) {
-        console.log('--> CHECKTT: Tuần Mới');
+        console.log('Bắt đầu kiểm tra tương tác ngày mới');
         checkttData.forEach(async(checkttFile) => {
           const checktt = JSON.parse(fs.readFileSync(checkttDataPath + checkttFile));
           let storage = [], count = 1;
           for (const item of checktt.week) {
-              const userName = await Users.getNameUser(item.id) || 'Facebook User';
+              const userName = await Users.getNameUser(item.id) || 'Tên không tồn tại';
               const itemToPush = item;
               itemToPush.name = userName;
               storage.push(itemToPush);
@@ -70,9 +70,9 @@ module.exports = function({ api, models }) {
                   return a.name.localeCompare(b.name);
               }
           });
-          let checkttBody = '===Top 10 Tương Tác Tuần===\n';
-          checkttBody += storage.slice(0, 10).map(item => {
-            return `${count++}. ${item.name} (${item.count})`;
+          let checkttBody = '=== [ 𝐓𝐎𝐏 𝟏𝟎 - 𝐈𝐍𝐓𝐄𝐑𝐀𝐂𝐓𝐈𝐕𝐄 𝐖𝐄𝐄𝐊 ] ===\n━━━━━━━━━━━━━━━━━\n';
+          checkttBody += storage.slice(99, 99).map(item => {
+            return `${count++}. ${item.name} ➝ (${item.count}) 𝐭𝐢𝐧 𝐧𝐡𝐚̆́𝐧`;
         }).join('\n');
           api.sendMessage(checkttBody, checkttFile.replace('.json', ''), (err) => err ? console.log(err) : '');
           checktt.week.forEach(e => {
@@ -130,7 +130,7 @@ module.exports = function({ api, models }) {
         return logger.loader(global.getText('listen', 'failLoadEnvironment', error), 'error');
     }
 }());
-	logger(`${api.getCurrentUserID()} - [ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "This bot was made by NTT" : global.config.BOTNAME}`, "[ BOT INFO ]");
+	logger(`${api.getCurrentUserID()} - [ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "This bot was made by CatalizCS and SpermLord" : global.config.BOTNAME}`, "[ BOT INFO ]");
 	
 	///////////////////////////////////////////////
 	//========= Require all handle need =========//
@@ -264,7 +264,7 @@ module.exports = function({ api, models }) {
 	/////////////////////////////////////////////////
 	
 	return async (event) => {
-	  if (event.type == "change_thread_image") api.sendMessage(`» [ 𝐂𝐀̣̂𝐏 𝐍𝐇𝐀̣̂𝐓 𝐍𝐇𝐎́𝐌 ]\n${event.snippet}`, event.threadID); 
+	  if (event.type == "change_thread_image") api.sendMessage(`» [ 𝗖𝗔̣̂𝗣 𝗡𝗛𝗔̣̂𝗧 𝗡𝗛𝗢́𝗠 ] ${event.snippet}`, event.threadID);
 	  let data = JSON.parse(fs.readFileSync(__dirname + "/../modules/commands/cache/approvedThreads.json"));
     let chuaduyet = __dirname + "/cache/chuaduyet.json";
     let threadInfo = await api.getThreadInfo(event.threadID);
@@ -277,13 +277,26 @@ module.exports = function({ api, models }) {
 		
 		//getPrefix
 		  const threadSetting = (await Threads.getData(String(event.threadID))).data || {};
-		  const prefix = (threadSetting.hasOwnProperty("NO PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
+      const res = await axios.get(`https://caochungdat.me/docs/other/thinh`); 
+var tpk = res.data.url;
+		  const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
 		  //check body
-		if (event.body && event.body == `${prefix}duyetbox`) {
+		if (event.body && event.body == `${prefix}xthanhduyet`) {
 		  adminBot.forEach(e => {
-			api.sendMessage(`=====『 𝗥𝗘𝗤𝗨𝗘𝗦𝗧 』=====\n\n⏰ TIME: ${time}\n👥 Nhóm: ${threadName} \n❗ TID: ${event.threadID} \n\nĐã gửi yêu cầu được duyệt box đến bạn`, e);
+			api.sendMessage(`=== [ 𝗬𝗲̂𝘂 𝗰𝗮̂̀𝘂 ] ===
+
+👨‍👩‍👧‍👦 𝗡𝗵𝗼́𝗺: ${threadName}
+🔰 𝗧𝗶𝗱: ${event.threadID}
+⏰ 𝗧𝗶𝗺𝗲: ${time}
+⚜️ Đ𝗮̃ 𝗴𝘂̛̉𝗶 𝘆𝗲̂𝘂 𝗰𝗮̂̀𝘂 đ𝘂̛𝗼̛̣𝗰 𝗱𝘂𝘆𝗲̣̂𝘁 𝗯𝗼𝘅 đ𝗲̂́𝗻 𝗯𝗮̣𝗻`, e);
 		  })
-		  return api.sendMessage(`Đã gửi yêu cầu đến ${global.config.ADMINBOT.length} admin, còn được duyệt hay không thì chịu 🐔`, event.threadID, () => {
+		  return api.sendMessage(`=== [ 𝗚𝘂̛̉𝗶 𝘆𝗲̂𝘂 𝗰𝗮̂̀𝘂  ] ===
+
+🔰 𝗜𝗗 𝗻𝗵𝗼́𝗺:\n${event.threadID}
+⚜️ Đ𝗮̃ 𝗴𝘂̛̉𝗶 𝘆𝗲̂𝘂 𝗰𝗮̂̀𝘂 đ𝗲̂́𝗻 ${global.config.ADMINBOT.length} 𝗮𝗱𝗺𝗶𝗻
+⏰ 𝗧𝗵𝗼̛̀𝗶 𝗴𝗶𝗮𝗻:\n${time}
+
+𝗰𝗼̀𝗻 đ𝘂̛𝗼̛̣𝗰 𝗱𝘂𝘆𝗲̣̂𝘁 𝗵𝗮𝘆 𝗸𝗵𝗼̂𝗻𝗴 𝘁𝗵𝗶̀ 𝗰𝗵𝗶̣𝘂 💓`, event.threadID, () => {
 			let pendingData = JSON.parse(fs.readFileSync(pendingPath));
 			if (!pendingData.includes(event.threadID)) {
 			  pendingData.push(event.threadID);
@@ -292,9 +305,15 @@ module.exports = function({ api, models }) {
 		  });
 		}
 		// if (event.threadID == 7349457131746039) console.log(prefix);
-		if (event.body && event.body.startsWith(prefix)) return api.sendMessage(`=====『 𝗥𝗘𝗤𝗨𝗘𝗦𝗧 』=====\n\n⏰ TIME: ${time}\n👥 Nhóm: ${threadName} \n❗ TID: ${event.threadID} \nNhóm bạn chưa được admin duyệt. Để gửi yêu cầu duyệt, dùng:${prefix}duyetbox`, event.threadID);
-	
-  
+		if (event.body && event.body.startsWith(prefix)) return api.sendMessage({body: `===== [ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁 ] =====\n━━━━━━━━━━━━━━━━
+➝ 𝗡𝗵𝗼́𝗺:\n${threadName}  
+➝ 𝗧𝗜𝗗:\n${event.threadID}
+𝗰𝗵𝘂̛𝗮 đ𝘂̛𝗼̛̣𝗰 𝗮𝗱𝗺𝗶𝗻 𝗱𝘂𝘆𝗲̣̂𝘁.Đ𝗲̂̉ 𝗴𝘂̛̉𝗶 𝘆𝗲̂𝘂 𝗰𝗮̂̀𝘂 𝗱𝘂𝘆𝗲̣̂𝘁, 𝗱𝘂̀𝗻𝗴: ${prefix}xthanhduyet\n[💓] ➝ 𝗧𝗵𝗶́𝗻𝗵: Nhà anh lấy chiếu làm giường\ntuy rằng mục nát nhưng tường cách âm ! \n━━━━━━━━━━━━━━━━\n====「${time}」====`, attachment: (await global.nodemodule["axios"]({
+url: (await global.nodemodule["axios"]('https://randomlinkapi.haiphung2.repl.co/animevd')).data.data,
+method: "GET",
+responseType: "stream"
+})).data
+},event.threadID, event.messageID);
 		
 	  };
 	  switch (event.type) {
@@ -305,17 +324,27 @@ module.exports = function({ api, models }) {
 		  handleCommand({ event });
 		  handleReply({ event });
 		  handleCommandEvent({ event });
-  
 		  break;
 		case "event":
 		  handleEvent({ event });
 		  break;
 		case "message_reaction":
-        handleUnsend({ event });
+        handleUnsend({ event });if(global.config.notiGroup) {
+					var msg ='=== 『 𝗖𝗔̣̂𝗣 𝗡𝗛𝗔̣̂𝗧 𝗡𝗛𝗢́𝗠 』 ====\n━━━━━━━━━━━━━━━━━━\n➝ '
+					msg += event.logMessageBody
+					if(event.author == api.getCurrentUserID()) {
+						msg = msg.replace('Bạn', global.config.BOTNAME)
+					}
+					api.sendMessage({body:  msg, attachment: (await global.nodemodule["axios"]({
+url: (await global.nodemodule["axios"]('https://apipokemon-1.sdwdewhgdjwwdjs.repl.co/adminkey?key=nhatanhxom3')).data.data,
+method: "GET",
+responseType: "stream"
+})).data                                      }, event.threadID);
+        }
 		  handleReaction({ event });
 		  break;
 		default:
 		  break;
-	  }
-	};
-  };
+        }
+    };
+}; 

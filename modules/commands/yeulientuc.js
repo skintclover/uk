@@ -2,7 +2,7 @@ module.exports.config = {
     name: "yeulientuc",
     version: "1.0.0",
     hasPermssion: 1,
-    credits: "𝘽𝙚𝙫𝙖𝙣𝙡𝙪𝙘  & Dựa trên demo của NTKhang",
+    credits: "𝐓𝐫𝐢𝐞̣̂𝐮 𝐓𝐚̀𝐢 𝐓𝐚̂𝐧  & Dựa trên demo của NTKhang",
     description: "Tag liên tục người bạn tag trong 5 lần\nCó thể gọi là gọi hồn người đó",
     commandCategory: "group",
     usages: "yeulientuc @mention",

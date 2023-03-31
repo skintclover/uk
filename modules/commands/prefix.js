@@ -29,7 +29,7 @@ const prefix = threadSetting.PREFIX || global.config.PREFIX;
       if (data.PREFIX == null) {
         return out(`️️️️️️️️️️️️️️️️️️️️️️️️️️️`)
       }
-      else return out('️️️️️️️️️️️️️️️️️️️️️️️️️️️» 𝐏𝐫𝐞𝐟𝐢𝐱 𝐡𝐢𝐞̣̂𝐧 𝐭𝐚̣𝐢 𝐥𝐚̀: ' + data.PREFIX)
+      else return out('️️️️️️️️️️️️️️️️️️️️️️️️️️️🎭 𝐏𝐫𝐞𝐟𝐢𝐱 𝐜𝐮̉𝐚 𝐛𝐨𝐭 𝐥𝐚̀: ' + data.PREFIX)
     }
 
   });

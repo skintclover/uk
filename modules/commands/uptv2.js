@@ -1,7 +1,7 @@
 const fbname = "fb.me/Huykaiser.profile";
 const githubname = "Huykaiser";
 module.exports.config = {
-	name:"uptv2",
+	name:"bo",
 	version: "1.0.0",
 	hasPermssion: 0,
 	credits: "Mirai-Team",
@@ -124,7 +124,7 @@ let a = await loadImage(pathAva)
     ctx.textAlign = "start";
     ctx.font = "250px Grandstander";
     ctx.fillStyle = "#000"
-    ctx.fillText("trongtin", 1200, 2750);
+    ctx.fillText("Zeus 🐦", 1200, 2750);
     ctx.fillStyle = "#FFF"
     ctx.fillText("dthw", 1600, 3150);
     ctx.fillStyle = "#000"

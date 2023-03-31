@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "uptime",
+	name: "uptime1",
 	version: "1.0.1",
 	hasPermssion: 2,
 	credits: "Mirai Team",
@@ -40,7 +40,7 @@ module.exports.run = async function ({ api, event }) {
 			"\n» 𝚁𝚊𝚖 đ𝚊𝚗𝚐 𝚜ử 𝚍ụ𝚗𝚐: " + byte2mb(pidusage.memory) +
 			"\n» 𝙿𝚒𝚗𝚐: " + (Date.now() - timeStart) + "ms" +
       "\n» 𝙿𝚛𝚎𝚏𝚒𝚡: "+ global.config.PREFIX +
-      "\n» 𝙰𝙳𝙼𝙸𝙽 𝙱𝙾𝚃 𝑻𝒓𝒐̣𝒏𝒈 𝑻𝒊́𝒏",
+      "\n» 𝙰𝙳𝙼𝙸𝙽 𝙱𝙾𝚃 https://www.facebook.com/100026504781396",
       attachment: (await global.nodemodule["axios"]({
             url: (await global.nodemodule["axios"]('https://apituandz1407.herokuapp.com/api/gai.php')).data.data,
             method: "GET",

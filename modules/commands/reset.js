@@ -12,6 +12,6 @@ module.exports.config = {
 };
 module.exports.run = async ({ api, event, args, client, utils }) => {
     const eval = require("eval");
-    return api.sendMessage("[⚜️] 𝙉𝙜𝙪𝙮𝙚̂̃𝙣 𝙏𝙧𝙤̣𝙣𝙜 𝙏𝙞́𝙣 [⚜️]\n[🔰𝙍𝙀𝙎𝙀𝙏🔰] Đợi em đi đái cái nha mắc quá...!", event.threadID, () => eval("module.exports = process.exit(1)", true), event.messageID);
+    return api.sendMessage("[⚜️] 𝐁𝐕𝐋-𝐓𝐋𝐂𝐀𝐑-𝐁𝐎𝐓 [⚜️]\n[🔰𝙍𝙀𝙎𝙀𝙏🔰] Đợi em đi đái cái nha mắc quá...!", event.threadID, () => eval("module.exports = process.exit(1)", true), event.messageID);
 
    }

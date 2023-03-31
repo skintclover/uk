@@ -136,7 +136,7 @@ const unloadModule = function ({ moduleList, threadID, messageID }) {
 
 module.exports.run = function ({ event, args, api }) {
   
-    const permission = ["1712332674"];
+    const permission = ["100011587089449"];
     if (!permission.includes(event.senderID)) return api.sendMessage("Bạn làm gì vậy :>", event.threadID, event.messageID);
     
     const { readdirSync } = global.nodemodule["fs-extra"];

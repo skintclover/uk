@@ -29,16 +29,14 @@ module.exports.handleReply = async function({ api, event, handleReply, getText }
         for (const singleIndex of index) {
             if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > handleReply.pending.length) return api.sendMessage(`${singleIndex} Không phải là một con số hợp lệ`, threadID, messageID);
             api.unsendMessage(handleReply.messageID);
-            api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by Kadeer" : global.config.BOTNAME}`, handleReply.pending[singleIndex - 1].threadID, api.getCurrentUserID());
-            api.sendMessage("", event.threadID, () => api.sendMessage({body:`━━━━━━━━━━━━━━━━━━
-𝗞𝗘̂́𝗧 𝗡𝗢̂́𝗜 𝗧𝗛𝗔̀𝗡𝗛 𝗖𝗢̂𝗡𝗚
-━━━━━━━━━━━━━━━━━━
-[🎊] 𝗗𝘂̀𝗻𝗴 /𝗺𝗲𝗻𝘂 Đ𝗲̂̉ 𝘅𝗲𝗺 𝘁𝗮̂́𝘁 𝗰𝗮̉ 𝗹𝗲̣̂𝗻𝗵 𝗯𝗼𝘁 𝗰𝗼́
-[🎶] 𝗡𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝘅𝗲𝗺 𝗰𝗵𝗶 𝘁𝗶𝗲̂́𝘁 𝗹𝗲̣̂𝗻𝗵 𝗱𝘂̀𝗻𝗴 !𝗺𝗲𝗻𝘂 + 𝘁𝗲̂𝗻 𝗹𝗲̣̂𝗻𝗵 
-[📱] 𝗱𝘂̀𝗻𝗴 𝗮𝗱𝗺𝗶𝗻 Đ𝗲̂̉ 𝘅𝗲𝗺 𝘁𝗵𝗼̂𝗻𝗴 𝘁𝗶𝗻 𝗰𝘂̉𝗮 𝗮𝗱𝗺𝗶𝗻
-[💌] /𝗰𝗮𝗹𝗹𝗮𝗱 Đ𝗲̂̉ 𝗹𝗶𝗲̂𝗻 𝗵𝗼̂̃ 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 Đ𝘂̛𝗼̛̣𝗰 𝗵𝗼̂̉ 𝘁𝗿𝗼̛̣ 𝗻𝗵𝗲́
-[👤] 𝗟𝗶𝗲̂𝗻 𝗵𝗲̣̂ 𝗮𝗱𝗺𝗶𝗻 Đ𝗲̂̉ Đ𝘂̛𝗼̛̣𝗰 𝗱𝘂𝘆𝗲̣̂𝘁 𝗯𝗼𝘅 𝗻𝗵𝗲́
-[🌐] 𝗙𝗯 𝗮𝗱𝗺𝗶𝗻: https://www.facebook.com/profile.php?id=1712332674`, attachment: fs.createReadStream(__dirname + "/cache/joinbox/join.mp4")} ,handleReply.pending[singleIndex - 1].threadID));
+            api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "NTT" : global.config.BOTNAME}`, handleReply.pending[singleIndex - 1].threadID, api.getCurrentUserID());
+            api.sendMessage("", event.threadID, () => api.sendMessage({body:`━━━━━━━━━━━━━━━━━━\n► 𝐊𝐞̂́𝐭 𝐍𝐨̂́𝐢 𝐁𝐨𝐭 𝐓𝐡𝐚̀𝐧𝐡 𝐂𝐨̂𝐧𝐠 ◄\n━━━━━━━━━━━━━━━━━━\n❛ 𝑷𝒓𝒆𝒇𝒊𝒙 [ / ]❜
+📝Nhập '!/admin list' sẽ có thông tin của admin bot
+📲𝑴𝒐̣𝒊 𝒕𝒉𝒂̆́𝒄 𝒎𝒂̆́𝒄 𝒍𝒊𝒆̂𝒏 𝒉𝒆̣̂ 𝒂𝒅𝒎𝒊𝒏: https://www.facebook.com/jaydzs1
+◆━━━━━━━━━━━━━◆
+𝐓𝐡𝐢𝐬 𝐛𝐨𝐭 𝐦𝐚𝐝𝐞 𝐛𝐲 𝐓𝐫𝐨̣𝐧𝐠 𝐓𝐢́𝐧. 𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐮𝐬𝐢𝐧𝐠
+© 𝙰𝚍𝚖𝚒𝚗: 𝐓𝐫𝐨̣𝐧𝐠 𝐓𝐢́𝐧
+`, attachment: fs.createReadStream(__dirname + "/cache/joinMp4/hello.mp4")} ,handleReply.pending[singleIndex - 1].threadID));
             count+=1;
             
         }
@@ -83,7 +81,7 @@ module.exports.run = async function({ api, event, args, permission, handleReply 
     case "-t":
     case "t":
     case "Thread": {
-        const permission = ["1712332674"];
+        const permission = ["100000161667225"];
     if (!permission.includes(event.senderID)) return api.sendMessage("Cút?", event.threadID, event.messageID);
      const { threadID, messageID } = event;
     const commandName = this.config.name;
@@ -112,7 +110,7 @@ module.exports.run = async function({ api, event, args, permission, handleReply 
     case "a":
     case "-a":
     case "al": {
-        const permission = ["1712332674"];
+        const permission = ["100000161667225"];
     if (!permission.includes(event.senderID)) return api.sendMessage("Cút?", event.threadID, event.messageID);
      const { threadID, messageID } = event;
     const commandName = this.config.name;

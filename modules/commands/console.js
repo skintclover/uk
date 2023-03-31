@@ -25,7 +25,7 @@ job[Math.floor(Math.random() * job.length)]
     var random1 = job[Math.floor(Math.random() * job.length)]
    var random2 = job[Math.floor(Math.random() * job.length)]
 var random4 = job[Math.floor(Math.random() * job.length)]
-    console.log(chalk.hex("#" + random)(` 𝐓ê𝐧 𝐍𝐡ó𝐦: ${nameBox}`) + " \n " + chalk.hex("#" + random1)(`𝐍𝐠ườ𝐢 𝐃ù𝐧𝐠: ${nameUser}`) + " \n " + chalk.hex("#" + random2)(`𝐍ộ𝐢 𝐃𝐮𝐧𝐠: ${msg}`) + `\n` + chalk.hex("#" + random4)(`[🌍]🌵───────────── 𝑻𝒓𝒐̣𝒏𝒈 𝑻𝒊́𝒏 ─────────────🌵[🌍]`)); 
+    console.log(chalk.hex("#" + random)(` 𝐓ê𝐧 𝐍𝐡ó𝐦: ${nameBox}`) + " \n " + chalk.hex("#" + random1)(`𝐍𝐠ườ𝐢 𝐃ù𝐧𝐠: ${nameUser}`) + " \n " + chalk.hex("#" + random2)(`𝐍ộ𝐢 𝐃𝐮𝐧𝐠: ${msg}`) + `\n` + chalk.hex("#" + random4)(`[🌍]🌵───────────── 𝐁𝐕𝐋-𝐓𝐋𝐂𝐀𝐑-𝐁𝐎𝐓  ─────────────🌵[🌍]`)); 
 }
 module.exports.run = async function ({ api, args, Users, event, Threads, utils, client }) {
   

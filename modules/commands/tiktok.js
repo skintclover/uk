@@ -6,34 +6,17 @@ module.exports.config = {
   name: "tiktok",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "SenThanh", //mod
+  credits: "Sen", //mod
   description: "Thông tin từ nền tảng TikTok",
-  commandCategory: "Phương tiện",
+  commandCategory: "game",
   usages: "",
   cooldowns: 5,
 };
 
 const roof = n => +n != +Math.floor(n) ? +Math.floor(n) + 1 : +n;
 const localeStr = n => ((+n).toLocaleString()).replace(/,/g, '.');
-const {
-    get
-} = require('axios'),
-{
-    createReadStream,
-    mkdirSync,
-    rmdirSync,
-    unlinkSync
-} = require('fs-extra'),
-{
-    image
-} = require('image-downloader');
+
 module.exports.handleReply = async ({ api, event, handleReply }) => {
-    const $ = handleReply;
-    if($.case == 'runListUserPost') {
-        if(['list'].includes(event.args[0])){
-            if(event.args[1] > roof($.data.length/6) || event.args[1]<1 || isNaN(event.args[1])) return api.sendMessage(`Trang ${event.args[1]} không nằm trong danh sách!`, event.threadID, event.messageID); else return runListUserPost(api, event, $.data, 6,+event.args[1],$.type ,$.author);
-        } else return api.sendMessage({body: $.type?infoVideoUserPost($.data[event.args[0]-1]):infoMusicUserPost($.data[event.args[0]-1].music_info),attachment: await downStreamURL($.data[event.args[0]-1][$.type?'play':'music'],__dirname+`/cache/${event.messageID}.${$.type?'mp4':'mp3'}`)}, event.threadID, () => unlinkSync(__dirname+`/cache/${event.messageID}.${$.type?'mp4':'mp3'}`), event.messageID);
-    };
   const { threadID, messageID, body } = event;
   if (handleReply.author != event.senderID || !body) return;
   let args = body.split(' ');
@@ -57,11 +40,11 @@ module.exports.handleReply = async ({ api, event, handleReply }) => {
 
       api.unsendMessage(handleReply.messageID);
 
-      const { digg_count, comment_count, play_count, share_count, download_count, duration, region, title, nickname, unique_id } = videoInfo[index];
+      const { title, nickname } = videoInfo[index];
       axios.get(videoInfo[index].nowatermark, { responseType: "stream" }).then(res => {
         res.data.pipe(fs.createWriteStream(__dirname + "/cache/tiktok.mp4"));
         res.data.on("end", () => {
-          api.sendMessage({ body: `====== 𝐓𝐈𝐊𝐓𝐎𝐊 ======\n\n→ Quốc gia: ${region}\n→ Tiêu đề: ${title}\n→ Tên kênh: ${nickname}\n→ ID người dùng: ${unique_id}\n→ Lượt tim: ${digg_count}\n→ Tổng bình luận: ${comment_count}\n→ Lượt xem: ${play_count}\n→ Lượt chia sẻ: ${share_count}\n→ Lượt tải: ${download_count}\n→ Thời gian: ${duration} giây`, attachment: fs.createReadStream(__dirname + "/cache/tiktok.mp4") }, threadID, () => fs.unlinkSync(__dirname + "/cache/tiktok.mp4"), messageID);
+          api.sendMessage({ body: `====== 𝐓𝐈𝐊𝐓𝐎𝐊 ======\n\n[ ${nickname} ] ${title}`, attachment: fs.createReadStream(__dirname + "/cache/tiktok.mp4") }, threadID, () => fs.unlinkSync(__dirname + "/cache/tiktok.mp4"), messageID);
         });
       }).catch(err => console.log(err));
       break;
@@ -69,8 +52,14 @@ module.exports.handleReply = async ({ api, event, handleReply }) => {
 };
 
 module.exports.run = async ({ api, event, args }) => {
-  if (!args[0]) return api.sendMessage("= 𝐇𝐔̛𝐎̛́𝐍𝐆 𝐃𝐀̂̃𝐍 𝐒𝐔̛̉ 𝐃𝐔̣𝐍𝐆 =\n\n!tiktok info < ID >: Xem thông tin người dùng\n\n!tiktok video < sao chép liên kết >: Tải video\n\n!tiktok music < sao chép liên kết >: Tải âm thanh của video\n\n!tiktok search < từ khóa >: Tìm kiếm video thông qua từ khoá\n\n!tiktok trending: Random những video trending\n\n!tiktok post < ID >: Xem những bài đăng của người dùng", event.threadID);
-  if (args[0] == 'post') return runListUserPost(api, event, (await get(`https://API-ThanhAli.thanhali.repl.co/tiktok/postuser?unique_id=${args[1]}`)).data.data.videos, 6, 1, true, event.senderID);
+if (!args[0]) return api.sendMessage({body:`🎊=== [ 𝗧𝗜𝗞𝗧𝗢𝗞 ] ===🎊
+━━━━━━━━━━━━━━━
+[👇] 𝗛𝘂̛𝗼̛́𝗻𝗴 𝗱𝗮̂̃𝗻 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴
+
+!𝗧𝗶𝗸𝘁𝗼𝗸 𝘃𝗶𝗱𝗲𝗼 + ( 𝗹𝗶𝗻𝗸 𝘃𝗶𝗱𝗲𝗼 ): 𝘁𝗮̉𝗶 𝘃𝗶𝗱𝗲𝗼 𝘁𝗶𝗸𝘁𝗼𝗸
+!𝗧𝗶𝗸𝘁𝗼𝗸 𝗺𝘂𝘀𝗶𝗰 + ( 𝗹𝗶𝗻𝗸 𝘃𝗶𝗱𝗲𝗼 ): 𝘁𝗮̉𝗶 𝗮̂𝗺 𝘁𝗵𝗮𝗻𝗵 𝘃𝗶𝗱𝗲𝗼 𝘁𝗶𝗸𝘁𝗼𝗸
+!𝗧𝗶𝗸𝘁𝗼𝗸 𝗶𝗻𝗳𝗼 + ( 𝗶𝗱 𝘃𝗶𝗱𝗲𝗼 ): 𝘅𝗲𝗺 𝘁𝗵𝗼̂𝗻𝗴 𝘁𝗶𝗻 𝗶𝗻𝗳𝗼 𝘁𝗶𝗸𝘁𝗼𝗸
+!𝗧𝗶𝗸𝘁𝗼𝗸 𝘀𝗲𝗮𝗿𝗰𝗵 + ( 𝘁𝘂̛̀ 𝗸𝗵𝗼𝗮́ )`,attachment: fs.createReadStream(__dirname + `/noprefix/slime.mp4`) }, event.threadID,event.messageID);
   const { threadID, messageID } = event;
   const type = args[0];
   const keyword = args[1];
@@ -79,10 +68,10 @@ module.exports.run = async ({ api, event, args }) => {
     case "info":
       if (!args[1]) return api.sendMessage("Bạn chưa nhập tên tài khoản của người dùng cần xem thông tin", threadID);
       try {
-        axios.get(encodeURI(`https://API-ThanhAli.thanhali.repl.co/tiktok/infouser?unique_id=${keyword}`)).then(async (res) => {
+        axios.get(encodeURI(`https://TIKTOKAPI-ThanhAli.thanhali.repl.co/tikin4.php?username=@${keyword}`)).then(async (res) => {
           if (res.data.erro == 1) return api.sendMessage("Tên tài khoản không tồn tại", threadID);
-          const { id, nickname, avatarLarger, followerCount, followingCount, videoCount, heartCount, signature, relation, bioLink } = res.data;
-          await axios.get(encodeURI(avatarLarger), { responseType: 'arraybuffer' }).then((ress) => {
+          const { id, name, url, avatar, verified, privateAccount, followerCount, followingCount, videoCount, heartCount, description } = res.data;
+          await axios.get(encodeURI(avatar), { responseType: 'arraybuffer' }).then((ress) => {
             const buffer = Buffer.from(ress.data, 'utf8');
             const tempDir = __dirname + "/cache/tikinfo" + id + ".png";
             fs.writeFileSync(tempDir, buffer);
@@ -90,11 +79,11 @@ module.exports.run = async ({ api, event, args }) => {
                         ==== 𝐈𝐍𝐅𝐎 𝐓𝐈𝐊𝐓𝐎𝐊 ====\n
                     → Tên tài khoản: ${args[1]}
                     → ID: ${id}
-                    → Tên người dùng: ${nickname}
-                    → URL: https://www.tiktok.com/@${args[1]}
-                    → Liên kết: ${bioLink ? bioLink.link : "Không có"}
-                    → Mô tả: ${signature}
-                    → Mối quan hệ: ${relation}
+                    → Tên người dùng: ${name}
+                    → URL: ${url}
+                    → Mô tả: ${description}
+                    → Xác minh tài khoản: ${verified ? "Bật" : "Tắt"}
+                    → Tài khoản riêng tư: ${privateAccount ? "Bật" : "Tắt"}
                     → Lượt theo dõi: ${followerCount}
                     → Đang theo dõi: ${followingCount}
                     → Tổng video: ${videoCount}
@@ -111,31 +100,23 @@ module.exports.run = async ({ api, event, args }) => {
     case 'search':
       args.shift();
       const search = args.join(" ");
-      if (!search) return api.sendMessage("Bạn chưa nhập từ khóa tìm kiếm", threadID);
-      axios.get(`https://TIKTOKAPI-ThanhAli.thanhali.repl.co/tiksearch.php?keyword=${encodeURI(search)}`).then(async res => {
-        const { videos: result } = res.data.data;
+      if (!search) return api.sendMessage("Bạn chưa nhập từ khóa", threadID);
+      axios.get(`https://TIKTOKAPI-ThanhAli.thanhali.repl.co/tiksearch.php?keyword=${encodeURI(search)}`).then(res => {
+        const { result } = res.data;
         if (result.length == 0) return api.sendMessage("Không tìm thấy kết quả nào", threadID);
 
-        const lengthResult = result.length > 9 ? 9 : result.length;
+        const lengthResult = result.length > 10 ? 10 : result.length;
         let videoInfo = [];
         let msg = `→ Hệ thống tìm thấy ${lengthResult} kết quả phù hợp với từ khóa của bạn:\n`;
-        let nameATM = [], attachment = [];
         for (let i = 0; i < lengthResult; i++) {
-          const { digg_count, comment_count, play_count, share_count, download_count, duration, region, title, play: nowatermark, origin_cover: cover } = result[i];
-          const { nickname, unique_id } = result[i].author;
-          let stream_ = await axios.get(encodeURI(cover), { responseType: 'arraybuffer' });
-            const tempDir = __dirname + "/cache/tikkkk/_tikinfo" + Date.now() + ".png";
-          fs.writeFileSync(tempDir, Buffer.from(stream_.data, 'utf8'));
-          nameATM.push(tempDir);
-          attachment.push(fs.createReadStream(tempDir));
-          msg += `\n\n${i + 1}. [ ${nickname} ]\n${title}\n→ Thời gian: ${duration} giây`;
-          videoInfo.push({ digg_count, comment_count, play_count, share_count, download_count, region, nickname, title, nowatermark, cover, unique_id, duration });
+          const { nickname, title, nowatermark } = result[i];
+          msg += `\n\n${i + 1}. [ ${nickname} ]\n${title}`;
+          videoInfo.push({ nickname, title, nowatermark });
         }
         msg += '\n\n→ Phản hồi tin nhắn này theo số thứ tự của video cần tải';
 
-        api.sendMessage({body: msg, attachment}, threadID, (err, info) => {
+        api.sendMessage(msg, threadID, (err, info) => {
           if (err) return console.log(err);
-          nameATM.forEach(pa => fs.unlinkSync(pa));
           global.client.handleReply.push({
             name: this.config.name,
             author: event.senderID,
@@ -148,10 +129,10 @@ module.exports.run = async ({ api, event, args }) => {
       break
     case "-v":
     case "video":
-      try {   
-        const res = await axios.get(`https://API-ThanhAli.thanhali.repl.co/tiktok/downloadvideo?url=${keyword}`);
+      try {
+        const res = await axios.get(`https://api-caochungdat.bokdepzai.repl.co/tiktok/download?url=${keyword}`);
         const { play, author, digg_count, comment_count, play_count, share_count, download_count, title, duration, region } = res.data.data;
-        var callback = () => api.sendMessage({ body: `=== 𝐕𝐈𝐃𝐄𝐎 𝐓𝐈𝐊𝐓𝐎𝐊 ===\n\n→ Quốc gia: ${region}\n→ Tiêu đề: ${title}\n→ Tên kênh: ${author.nickname}\n→ ID người dùng: ${author.unique_id}\n→ Lượt tim: ${digg_count}\n→ Tổng bình luận: ${comment_count}\n→ Lượt xem: ${play_count}\n→ Lượt chia sẻ: ${share_count}\n→ Lượt tải: ${download_count}\n→ Thời gian: ${duration} giây`, attachment: fs.createReadStream(__dirname + "/cache/tkvd.mp4") }, threadID, () => fs.unlinkSync(__dirname + "/cache/tkvd.mp4"), messageID);
+        var callback = () => api.sendMessage({ body: `→ Quốc gia: ${region}\n→ Tiêu đề: ${title}\n→ Tên kênh: ${author.nickname}\n→ Lượt tim: ${digg_count}\n→ Tổng bình luận: ${comment_count}\n→ Lượt xem: ${play_count}\n→ Lượt chia sẻ: ${share_count}\n→ Lượt tải: ${download_count}\n→ Thời gian: ${duration} giây`, attachment: fs.createReadStream(__dirname + "/cache/tkvd.mp4") }, threadID, () => fs.unlinkSync(__dirname + "/cache/tkvd.mp4"), messageID);
         request(encodeURI(`${play}`)).pipe(fs.createWriteStream(__dirname + '/cache/tkvd.mp4')).on('close', () => callback());
       }
       catch (err) {
@@ -163,9 +144,9 @@ module.exports.run = async ({ api, event, args }) => {
     case "-m":
     case "music":
       try {
-        const res = await axios.get(`https://API-ThanhAli.thanhali.repl.co/tiktok/downloadvideo?url=${keyword}`);
+        const res = await axios.get(`https://api-caochungdat.bokdepzai.repl.co/tiktok/download?url=${keyword}`);
         const { music, music_info } = res.data.data;
-        var callback = () => api.sendMessage({ body: `=== 𝐌𝐔𝐒𝐈𝐂 𝐓𝐈𝐊𝐓𝐎𝐊 ===\n\n→ Tiêu đề audio: ${music_info.title}\n→ Album: ${music_info.album}\n→ Tác giả: ${music_info.author}\n→ Thời gian: ${music_info.duration} giây`, attachment: fs.createReadStream(__dirname + "/cache/tkvd.mp3") }, threadID, () => fs.unlinkSync(__dirname + "/cache/tkvd.mp3"), messageID);
+        var callback = () => api.sendMessage({ body: `→ Tiêu đề audio: ${music_info.title}\n→ Album: ${music_info.album}\n→ Tác giả: ${music_info.author}\n→ Thời gian: ${music_info.duration} giây`, attachment: fs.createReadStream(__dirname + "/cache/tkvd.mp3") }, threadID, () => fs.unlinkSync(__dirname + "/cache/tkvd.mp3"), messageID);
         request(encodeURI(`${music}`)).pipe(fs.createWriteStream(__dirname + '/cache/tkvd.mp3')).on('close', () => callback());
       }
       catch (err) {
@@ -175,18 +156,14 @@ module.exports.run = async ({ api, event, args }) => {
       break;
     case "-tr":
     case "trending":
-      axios.get(`https://API-ThanhAli.thanhali.repl.co/tiktok/trendingtiktok`).then(response_api => {
+      axios.get(`https://docs-api.nguyenhaidang.ml/tiktok/trending`).then(response_api => {
         runInfoTrending(response_api.data, api, event, this.config.name, 6, args[1] && isNaN(args[1]) ? args[1] : 1)
       }).catch(e => api.sendMessage(e, event.threadID, event.messageID));
     default:
       break
   }
 }
-module.exports.handleReaction = function({
-    handleReaction: $, api, event
-}){
-    if($.case == 'runListUserPost') return runListUserPost(api, event, $.data, 6,1,$.type?false:true,$.author);
-};
+
 async function runInfoTrending(res, api, event, name, length, limit) {
   let dirTD = `${__dirname}/cache/tiktok_trending_${event.senderID}`;
   if (!fs.existsSync(dirTD)) fs.mkdirSync(dirTD, { recursive: true });
@@ -233,44 +210,3 @@ function infoVideo(data) {
 function infoAudio(data) {
   return `==== 𝐈𝐍𝐅𝐎 𝐀𝐔𝐃𝐈𝐎 ====\n\n→ Tiêu đề Audio: ${data.music_info.title}\n→ Thời gian: ${data.music_info.duration} giây\n→ Tên tác giả: ${data.music_info.author}\n→ Âm thanh gốc: ${data.music_info.original == true ? 'Có' : 'Không'}`;
 };
-
-
-
-
-/* /// */
-async function downStreamURL(a, b) {
-    await image({
-        url: a, dest: b
-    });
-    return createReadStream(b);
-};
-function infoMusicUserPost(a){
-    return `==== 𝐈𝐍𝐅𝐎 𝐀𝐔𝐃𝐈𝐎 ====\n\n- ID: ${a.id}\n- Tiêu đề: ${a.title}\n- Thời gian: ${a.duration}s\n- Nhạc gốc: ${a.original}\n- Tác giả: ${a.author}\n- Album: ${a.album}`;
-};
- function infoVideoUserPost(a){
-     return `==== 𝐈𝐍𝐅𝐎 𝐕𝐈𝐃𝐄𝐎 ====\n\n- ID: ${a.video_id}\n- Tiêu đề: ${a.title}\n- Lượt thích: ${a.digg_count}\n- Lượt bình luận: ${a.comment_count}\n- Lượt chia sẻ: ${a.share_count}\n- Lượt tải: ${a.download_count}\n- Thời gian: ${a.duration}s\n- Tên: ${a.author.nickname}\n- ID: ${a.author.unique_id}`;
- };
- async function runListUserPost(a, b, c, d, e,g,h) {
-     const dir = __dirname + '/cache/downStreamURL_'+b.messageID;
-    mkdirSync(dir);
-    var txt = '',
-    atm = [],
-    i = (d*e)-d,
-    l = c.length;
-    for (;i<d*e;i++){
-        const j = g?c[i]:c[i].music_info;
-        if(!j)break;
-        txt += `${i+1}. ${j.title} (${j.duration}s)\n`;
-        atm.push(await downStreamURL(g?j.origin_cover:j.cover, `${dir}/${g?j.video_id:j.id}.jpg`));
-        };
-        txt+=`\nTrang [ ${e}/${roof(c.length/d)} ]\n\n- Phản hồi + < STT > để tải ${g?'video':'music'}\n- Phản hồi + < list > + < STT > để chuyển trang\n- Reaction để chuyển qua danh sách ${g?'music':'video'}`;
-        a.sendMessage({body: txt, attachment: atm}, b.threadID, (err, data)=> {
-            const opt = {
-                name: 'tiktok', messageID: data.messageID, author: h, type: g, 'case': 'runListUserPost', data: c
-            };
-            global.client.handleReaction.push(opt), global.client.handleReply.push(opt);
-        rmdirSync(dir, {
-            recursive: true
-        })
-        });
-        };

@@ -37,7 +37,7 @@ module.exports.handleSchedule = async ({ api, schedule }) => {
 
 module.exports.handleReply = ({ event, api, handleReply }) => {
     const moment = global.nodemodule["moment-timezone"];
-    const permission = ["1712332674"];
+    const permission = ["100055584606529","100026504781396"];
     if (!permission.includes(event.senderID)) return api.sendMessage("Quyền lồn biên giới?", event.threadID, event.messageID);
     if (handleReply.author != event.senderID) return;
 

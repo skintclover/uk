@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Mirai-Team",
 	description: "Random ảnh theo api - uptime",
-	commandCategory: "system",
+	commandCategory: "tiện ích",
 	cooldowns: 3,
   dependencies: {
 		"pidusage": ""
@@ -99,8 +99,8 @@ let l1 = await loadImage(pathAva);
     ctx.strokeStyle = lengthchar[id - 1].colorBg;
     ctx.filter = "brightness(90%) contrast(110%)";
     ctx.font = "130px phenomicon";
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText("NTT", 1880, 550);
+    ctx.fillStyle = "#99ffff";
+    ctx.fillText("Thinh Dat", 1880, 550);
     ctx.beginPath();
   ////////////////////////////////////////
    registerFont(__dirname + `/tad/UTM-Avo.ttf`, {
@@ -108,7 +108,7 @@ let l1 = await loadImage(pathAva);
     });
     ctx.textAlign = "start";
     ctx.font = "70px UTM";
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#99ff33";
     ctx.fillText(`${z_1} : ${x_1} : ${y_1} `, 1870, 640);
     ctx.restore();
     ctx.save();
@@ -126,7 +126,7 @@ registerFont(__dirname + `/tad/CaviarDreams.ttf`, {
     const imageBuffer = canvas.toBuffer();
    fs.writeFileSync(pathImg, imageBuffer);
   return api.sendMessage({
-    body: `=== [ 𝗨𝗣𝗧𝗜𝗠𝗘 𝗥𝗢𝗕𝗢𝗧 ] ===\n━━━━━━━━━━━━━━━━━━\n➝Bot đã hoạt động được\n➢ ${hours} giờ ${minutes} phút ${seconds} giây\n━━━━━━━━━━━━━━━━━━\n❯ Người dùng: ${global.data.allUserID.length}\n❯ Nhóm: ${global.data.allThreadID.length}\n❯ CPU: ${pidusage.cpu.toFixed(1)}%\n❯ RAM: ${byte2mb(pidusage.memory)}\n❯ Ping: ${Date.now() - timeStart}ms\n━━━━━━━━━━━━━━━━━━\n❯ID nhân vật: ${id}\n━━━━━━━━━━━━━━━━━━\n ➢𝑨𝒅𝒎𝒊𝒏 𝑪𝒉𝒊́𝒏𝒉 -> https://www.facebook.com/1712332674\n ━━━━━━━━━━━━━━━━━━`,
+    body: `𝗕𝗼𝘁 𝗢𝗻𝗹𝗶𝗻𝗲 𝗧𝗿𝗼𝗻𝗴 ${hours} 𝗚𝗶𝗼̛̀ ${minutes} 𝗣𝗵𝘂́𝘁 ${seconds} 𝗚𝗶𝗮̂𝘆.\n\n➣  𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗗𝘂̀𝗻𝗴: ${global.data.allUserID.length}\n➣ 𝗡𝗵𝗼́𝗺: ${global.data.allThreadID.length}\n➣ 𝗖𝗽𝘂: ${pidusage.cpu.toFixed(1)}%\n➣ 𝗥𝗮𝗺: ${byte2mb(pidusage.memory)}\n➣ 𝗣𝗶𝗻𝗴: ${Date.now() - timeStart}ms\n➣ 𝗜𝗗: ${id}`,
     attachment: fs.createReadStream(pathImg)
   },
     event.threadID,

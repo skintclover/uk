@@ -98,7 +98,7 @@ module.exports.handleEvent = function({ api, event}) {
 	if (event.body.indexOf("12 con giáp")==0 || (event.body.indexOf("12 con giáp")==0)) {
 		api.sendMessage({
 			body: "==== 12 con giáp trong dân gian ====\n 1. Tý 🐁\n 2. Sửu 🐃\n 3. Dần 🐅\n 4. Mão 🐈\n 5. Thìn 🐉\n 6. Tỵ 🐍\n 7. Ngọ 🦓\n 8. Mùi 🐐\n 9. Thân 🐒\n10. Dậu 🐓\n11. Tuất 🐕\n12. Hợi 🐖\n\nReply tin nhắn theo số để xem thêm về từng con giáp <3",
-			attachment: fs.createReadStream(__dirname + `/cache/12congiap.jpg`)
+			attachment: fs.createReadStream(__dirname + `/cache/th.jpg`)
 		}, event.threadID, (error, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID}), event.messageID);
 	}
 }

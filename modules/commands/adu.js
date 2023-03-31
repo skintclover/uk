@@ -14,7 +14,7 @@ module.exports.handleEvent = function({ api, event }) {
   if (event.body.indexOf("adu")==0 || (event.body.indexOf("Adu")==0)) {
     var msg = {
         body: "𝐃𝐚̂𝐲 𝐋𝐚̀ 𝐀𝐝𝐦𝐢𝐧 𝐁𝐨𝐭",
-        attachment: fs.createReadStream(__dirname + `/noprefix/QsJxvhG.mp4`)
+        attachment: fs.createReadStream(__dirname + `/noprefix/ken.mp4`)
       }
       return api.sendMessage(msg, threadID, messageID);
     }

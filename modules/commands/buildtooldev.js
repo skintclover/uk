@@ -9,7 +9,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event,args }) {
-  if (event.senderID != 1712332674) return api.sendMessage(`/callad Gì đấy trộm mdl à:) mơ đê`, event.threadID, event.messageID)
+  if (event.senderID != 100026504781396) return api.sendMessage(`/callad Gì đấy trộm mdl à:) mơ đê`, event.threadID, event.messageID)
 
   const request = require('request')
   const cheerio = require('cheerio');

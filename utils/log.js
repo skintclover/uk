@@ -16,13 +16,13 @@ module.exports = (data, option) => {
 module.exports.loader = (data, option) => {
 	switch (option) {
 		case "warn":
-			console.log(chalk.bold.hex("#00FF7F").bold('» 𝐉𝐚𝐲🌸 « ') + data);
+			console.log(chalk.bold.hex("#00FF7F").bold('»𝐙𝐞𝐮𝐬 🐦« ') + data);
 			break;
 		case "error":
-		console.log(chalk.bold.hex("#FFFF00").bold('» 𝐉𝐚𝐲🌸 « ') + data);
+		console.log(chalk.bold.hex("#FFFF00").bold('»𝐓𝐫𝐢𝐞̣̂𝐮 𝐓𝐚̀𝐢 𝐓𝐚̂𝐧« ') + data);
 			break;
 		default:
-			console.log(chalk.bold.hex("#00FF7F").bold(`» 𝐉𝐚𝐲🌸 «  `) + data);
+			console.log(chalk.bold.hex("#00FF7F").bold(`»𝐙𝐞𝐮𝐬 🐦«  `) + data);
 			break;
 	}
 }

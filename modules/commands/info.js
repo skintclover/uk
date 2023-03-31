@@ -1,44 +1,73 @@
 module.exports.config = {
- name: "info", 
-version: "1.0.0", 
-hasPermssion: 0,
- credits: "Horizon mod by JRT", 
-description: "Lấy thông tin người dùng", 
-commandCategory: "Thông tin", 
-usages: "info", 
-cooldowns: 5 
-}; 
-
- module.exports.run =async function({ api, event,args,client }) {
-   const fs = global.nodemodule["fs-extra"];
-    const request = global.nodemodule["request"];
-    const axios = global.nodemodule['axios']; 
- var data = await api.getUserInfoV2(event.senderID);
-var name = data.name 
-  //name = 'No name'
-   //(e, i) => if(e) name = 'noname'
- 
-var username = data.username
-var follow = data.follow
-var uid = data.uid
-   var about = data.about
-   var gender = data.gender
-   var birthday = data.birthday
-   var love = data.relationship_status 
-   var rela = data.love.name  
-   var id = data.love.id
-   var location = data.location.name
-   var place = data.location.id 
-   var hometown = data.hometown.name
-   var home = data.hometown.id
-   var url_profile = data.link
-   var web = data.website
-   var quotes = data.quotes
-   var link = data.imgavt
-   
-var callback = () => api.sendMessage({body:`[👤] Tên: ${name}\n[🍁] UserName: ${username}\n[🔎] UID: ${uid}\n[👀] Follow: ${follow}\n[👭] Giới tính: ${gender}\n[🎉] Sinh Nhật: ${birthday}\n[💌] Mối quan hệ: ${love}\n[💞] Love name: ${rela}\n[💓] UID love: ${id}\n[🏡] Sống tại: ${location}\n[🌆] ID Place: ${home}\n[🌏] Đến từ: ${hometown}\n[🏙️] ID Hometown: ${home}\n[💻] Website: ${web}\n[📌] URL cá nhân: ${url_profile}\n[⚜️] Trích dẫn: ${quotes}`, attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID,
-        () => fs.unlinkSync(__dirname + "/cache/1.png"),event.messageID ); 
-    return request(encodeURI(`https://graph.facebook.com/v12.0/${uid}/picture?height=240&width=240&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).pipe(fs.createWriteStream(__dirname+'/cache/1.png')).on('close',
-        () => callback());
-
- }
+    name: 'info',
+    version: '1.1.1',
+    hasPermssion: 0,
+    credits: '',
+    description: 'Xem thông tin người dùng Facebook',
+    commandCategory: 'Tiện ích',
+    usages: '[...|tag|reply|uid|username]',
+    cooldowns: 2
+};
+const {
+    get
+} = require('axios');
+const {
+    image
+} = require('image-downloader');
+const {
+    createReadStream
+} = require('fs-extra');
+module.exports.run = async function({
+    api, event, args, Threads, Currencies
+}) {
+    try {      
+        var uqID = event.type == 'message_reply' ? event.messageReply.senderID: Object.keys(event.mentions).length != 0 ? Object.keys(event.mentions)[0]: !!args[0] && !!args[0] ? args[0]: event.senderID;
+        uqID = await get(`https://caochungdat.me/docs/facebook/timejoin?user=${uqID}`);
+        const {threadInfo = {adminIDs: []}} = await Threads.getData(event.threadID) || {};
+        const ban = global.data.userBanned.has(uqID.data.data.uid) ?  "Đang bị cấm" : "Không bị cấm";
+        var permission;
+        if (global.config.ADMINBOT.includes(uqID.data.data.uid)) permission = `ADMIN Bot`; else if (threadInfo.adminIDs.some(i => i.id == uqID.data.data.uid)) permission = `Quản Trị Viên Nhóm`; else permission = `Thành Viên Nhóm`;
+        const ciesData = await Currencies.getData(uqID.data.data.uid);
+        const userInfo = await api.getUserInfo(uqID.data.data.uid);
+        const res = await get(`https://caochungdat.me/docs/facebook/info?uid=${uqID.data.data.uid}`);// api info nhá
+        const {name,link_profile,uid,first_name,web,gender,relationship_status,love,birthday,follower,avatar,tichxanh,location,hometown,username,about,locale} = res.data || {};
+        const dest = `${__dirname}/cache/testt.png`;
+        await image({
+            url: avatar, dest
+        });
+        api.sendMessage({
+            body: `
+=== 𝗜𝗡𝗙𝗢 𝗨𝗦𝗘𝗥 𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 ===
+━━━━━━━━━━━━━━━━━━
+→ Tên: ${first_name}
+→ Tên đầy đủ: ${name}
+→ Giới tính: ${gender}
+→ Ngày sinh: ${birthday}
+→ Đến từ: ${hometown}
+→ Sống tại: ${location}
+→ Vùng/miền: ${locale}
+→ Mối quan hệ: ${relationship_status} ${!relationship_status|| !love ? '': `với ${love}`}
+→ Trang Web: ${web}
+→ Tích xanh: ${tichxanh}
+→ Mã ID: ${uid}
+→ Tên ID: ${username}
+→ Liên kết TCN: ${link_profile}
+→ Có ${localeNum(follower)} người theo dõi
+→ Tham gia facebook vào: ${uqID.data.data.date}
+→ Giới thiệu: ${about}
+==========================
+→ Trạng thái: ${userInfo[uqID.data.data.uid].isFriend ? 'Có': 'Không'} kết bạn với bot
+→ Tổng tin nhắn: ${localeNum(ciesData.exp)} tin
+→ Money trên bot: ${localeNum(ciesData.money)}$
+→ Chức vụ trong nhóm: ${permission}
+→ Kiểm tra cấm: ${ban} dùng bot
+`.replace(/null|undefined/g, 'Không có dữ liệu!').replace(/false/g, 'Không có').replace(/true/g, 'Có tích'), attachment: createReadStream(dest)
+        }, event.threadID, event.messageID);
+    }catch(e) {
+        api.sendMessage(`${e}`, event.threadID, event.messageID);
+       console.log(e)
+    };
+};
+function localeNum(a){
+    return (a.toLocaleString()).replace(/\,/g, '.');
+};

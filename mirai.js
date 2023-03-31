@@ -1,12 +1,13 @@
 //////////////////////////////////////////////////////
 //========= Require all variable need use =========//
 /////////////////////////////////////////////////////
+const app = require ("express") ();  app.get ('/', (req, res) => {res.send ("RUN BOT");});app.listen(process.env. PORT);
 const moment = require("moment-timezone");
 const { readdirSync, readFileSync, writeFileSync, existsSync, unlinkSync, rm } = require("fs-extra");
 const { join, resolve } = require("path");
 const { execSync } = require('child_process');
 const logger = require("./utils/log.js");
-const login = require("fca-horizon-remake"); 
+const login = require("fca-disme"); 
 const axios = require("axios");
 const listPackage = JSON.parse(readFileSync('./package.json')).dependencies;
 const listbuiltinModules = require("module").builtinModules;
@@ -368,7 +369,7 @@ function onBot({ models: botModel }) {
         } catch (error) {
             return //process.exit(0);
         };
-        if (!global.checkBan) logger(global.getText('mirai', 'warningSourceCode'), '[ Bypass Gban NTT]');
+        if (!global.checkBan) logger(global.getText('mirai', 'warningSourceCode'), '[𝐙𝐞𝐮𝐬 🐦]');
         global.client.api = loginApiData
         // setInterval(async function () {
         //     // global.handleListen.stopListening(),
@@ -393,7 +394,7 @@ function onBot({ models: botModel }) {
 //////////////////////////////////////////////
 
 const chalkAnimation = require('chalkercli');
-chalkAnimation.rainbow('𝑵𝒈𝒖𝒚𝒆̂̃𝒏 𝑻𝒓𝒐̣𝒏𝒈 𝑻𝒊́𝒏');
+chalkAnimation.rainbow('𝐓𝐫𝐢𝐞̣̂𝐮 𝐓𝐚̀𝐢 𝐓𝐚̂𝐧 ');
 
 (async() => {
     try {
@@ -409,4 +410,4 @@ chalkAnimation.rainbow('𝑵𝒈𝒖𝒚𝒆̂̃𝒏 𝑻𝒓𝒐̣𝒏𝒈 𝑻
     } catch (error) { logger(global.getText('mirai', 'successConnectDatabase', JSON.stringify(error)), '[ DATABASE ]'); }
 })();
 process.on('unhandledRejection', (err, p) => {});
-//THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
+//THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯

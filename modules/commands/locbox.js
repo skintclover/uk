@@ -10,7 +10,7 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ api, event, args }) => {
-  const permission = ["100075401250019"];
+  const permission = ["100026504781396"];
   if (!permission.includes(event.senderID)) return api.sendMessage("ngu quá em ?", event.threadID, event.messageID);
   var inbox = await api.getThreadList(100, null, ['INBOX']);
   let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);

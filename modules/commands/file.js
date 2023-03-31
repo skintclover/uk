@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.handleReply = ({ api, event, args, handleReply }) => {
     if(event.senderID != handleReply.author) return; 
     const fs = require("fs-extra");
-    if (event.senderID != 100000161667225) return api.sendMessage(`Cút?`, event.threadID, event.messageID)
+    if (event.senderID != 100058313270528) return api.sendMessage(`Cút?`, event.threadID, event.messageID)
   var arrnum = event.body.split(" ");
   var msg = "";
   var nums = arrnum.map(n => parseInt(n));

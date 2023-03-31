@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "tikvideo",
+    name: "tikvid",
     version: "1.0.1",
     hasPermssion: 0,
     credits: "tdunguwu",
@@ -29,7 +29,19 @@ var title = res.data.title;
 var author_video = res.data.author_video;
     var data_music = res.data.data_music.title;
 
-	 var callback = () => api.sendMessage({body:`Name: ${author_video}\nTên nhạc: ${data_music}\nNội dung: ${title}`,attachment: fs.createReadStream(__dirname + "/cache/1.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.mp4"),event.messageID);
+	 var callback = () => api.sendMessage({body:`==== 𝗧𝗜𝗞𝗧𝗢𝗞 𝗩𝗜𝗗𝗘𝗢 ====
+━━━━━━━━━━━━━━━━━━
+→ Quốc gia: VN
+━━━━━━━━━━━━━━━━━━
+→ Lượt Tim: Infinity ❤️
+━━━━━━━━━━━━━━━━━━
+→ Lượt Tải: Unknown 🐟
+━━━━━━━━━━━━━━━━━━
+→ Tên kênh: ${author_video}\n
+━━━━━━━━━━━━━━━━━━
+→ Tên nhạc: ${data_music}\n
+━━━━━━━━━━━━━━━━━━
+→ Tiêu đề: ${title}`,attachment: fs.createReadStream(__dirname + "/cache/1.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.mp4"),event.messageID);
 	 return request(encodeURI(`${url}`)).pipe(fs.createWriteStream(__dirname+'/cache/1.mp4')).on('close',() => callback());  }
    catch (err) {
         console.log(err)

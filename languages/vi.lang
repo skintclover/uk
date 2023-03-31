@@ -25,11 +25,11 @@ mirai.keyNotSameFormat=Dữ liệu bạn nhập phải là một dãy số bao g
 mirai.codeInputExpired=Code bạn nhập không trùng khớp hoặc đã hết hạn!
 mirai.unbanDeviceSuccess=Thiết bị của bạn đã được gỡ ban, hãy khởi động lại để có thể tiếp tục sử dụng
 mirai.userBanned=Bạn đã bị ban khỏi miraiproject vào lúc %1 với lý do: %2. Liên hệ tới facebook https://www.facebook.com/tscutichuany để biết thêm chi tiết!
-mirai.finishCheckListGban=Bản Bypass Này Được Tạo Ra Bởi Nguyễn Trọng Tín Vui Lòng Không Thay Dòng Này !
+mirai.finishCheckListGban=Bản Bypass Này Được Tạo Ra Bởi Bế Văn Lực Vui Lòng Không Thay Dòng Này !
 mirai.handleListenError=handleListener đã xảy ra một số lỗi không mong muốn, lỗi: %1
 mirai.warningSourceCode=PHÁT HIỆN SOURCE CODE ĐÃ BỊ THAY ĐỔI CẤU TRÚC, HÃY DỪNG LẠI NGAY!
 mirai.refreshListen=Đã làm mới lại handleListener...
-mirai.successConnectDatabase=BOT BY 𝑵𝒈𝒖𝒚𝒆̂̃𝒏 𝑻𝒓𝒐̣𝒏𝒈 𝑻𝒊́𝒏
+mirai.successConnectDatabase=Bot By Be Van Luc
 mirai.failConnectDatabase=Kết nối đến cơ sở dữ liệu thất bại, lỗi: %1
 
 # includes/listen.js
@@ -37,7 +37,7 @@ mirai.failConnectDatabase=Kết nối đến cơ sở dữ liệu thất bại, 
 listen.startLoadEnvironment=Tiến hành khởi tạo biến môi trường...
 listen.loadedEnvironmentThread=Đã tải thành công biến môi trường nhóm
 listen.loadedEnvironmentUser=Đã tải thành công biến môi trường người dùng
-listen.successLoadEnvironment=Bot Nguyễn Trọng Tín Sẽ Bất Đầu Nhận Tin Nhắn.
+listen.successLoadEnvironment=Bot Bế Văn Lực Sẽ Bất Đầu Nhận Tin Nhắn.
 listen.failLoadEnvironment=Khởi tạo biến môi trường không thành công, lỗi: %1
 
 # includes/controller/currencies.js
@@ -59,8 +59,8 @@ users.needObject=Phải là một Object
 # includes/handle/handleCommand.js
 
 handleCommand.userBanned=Bạn đã bị cấm sử dụng bot "%1"\nVui lòng liên hệ ADMIN qua:\n📌FB: https://www.facebook.com/100000161667225\n☎️️Zalo: 0329036401 để biết thêm chi tiết
-handleCommand.threadBanned=Nhóm bạn đã bị cấm sử dụng lệnh "%1"\nVui lòng liên hệ ADMIN qua:\n📌FB: https://www.facebook.com/100000161667225\n☎️️Zalo: 0329036401 để biết thêm chi tiết
-handleCommand.commandNotExist= ━━━━━━━━━━━━━━━━━━━━\n==『 𝐓𝐢𝐧 𝐍𝐡𝐚̆́𝐧 𝐇𝐞̣̂ 𝐓𝐡𝐨̂́𝐧𝐠 』==\n━━━━━━━━━━━━━━━━━━━━\n➣  𝐏𝐫𝐞𝐟𝐢𝐱 𝐂𝐮̉𝐚 𝐁𝐨𝐭 + 𝐍𝐨̣̂𝐢 𝐃𝐮𝐧𝐠 𝐓𝐫𝐮𝐲𝐞̂̀𝐧 𝐓𝐚̉𝐢 \n➣  𝐍𝐨̣̂𝐢 𝐃𝐮𝐧𝐠 𝐓𝐫𝐮𝐲𝐞̂̀𝐧 𝐓𝐚̉𝐢 𝐆𝐢𝐨̂́𝐧𝐠 𝐓𝐫𝐨𝐧𝐠 𝐌𝐞𝐧𝐮 𝐂𝐮̉𝐚 𝐁𝐨𝐭\n➣  𝐗𝐞𝐦 𝐓𝐚̂́𝐭 𝐂𝐚̉ 𝐋𝐞̣̂𝐧𝐡 𝐂𝐮̉𝐚 𝐁𝐨𝐭\n➣  /𝐦𝐞𝐧𝐮 𝐚𝐥𝐥\n➣   𝐆𝐮̛̉𝐢 𝐓𝐡𝐨̂𝐧𝐠 𝐓𝐢𝐧 𝐕𝐞̂̀ 𝐀𝐝𝐦𝐢𝐧 \n➣  /𝐜𝐚𝐥𝐥𝐚𝐝\n━━━━━━━━━━━━━━━━━━\n 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: fb.com/jaydzs1\n 𝐋𝐢𝐞̂𝐧 𝐇𝐞̣̂: m.me/jaydzs1
+handleCommand.threadBanned=Nhóm bạn đã bị cấm sử dụng lệnh "%1"\nVui lòng liên hệ ADMIN qua:\n📌FB: https://www.facebook.com/BVL.2009\n☎️️Zalo: 05 để biết thêm chi tiết
+handleCommand.commandNotExist= ━━━━━━━━━━━━━━━━━━━━\n==『 𝐓𝐢𝐧 𝐍𝐡𝐚̆́𝐧 𝐇𝐞̣̂ 𝐓𝐡𝐨̂́𝐧𝐠 』==\n━━━━━━━━━━━━━━━━━━━━\n➣  𝐏𝐫𝐞𝐟𝐢𝐱 𝐂𝐮̉𝐚 𝐁𝐨𝐭 + 𝐍𝐨̣̂𝐢 𝐃𝐮𝐧𝐠 𝐓𝐫𝐮𝐲𝐞̂̀𝐧 𝐓𝐚̉𝐢 \n➣  𝐍𝐨̣̂𝐢 𝐃𝐮𝐧𝐠 𝐓𝐫𝐮𝐲𝐞̂̀𝐧 𝐓𝐚̉𝐢 𝐆𝐢𝐨̂́𝐧𝐠 𝐓𝐫𝐨𝐧𝐠 𝐌𝐞𝐧𝐮 𝐂𝐮̉𝐚 𝐁𝐨𝐭\n➣  𝐗𝐞𝐦 𝐓𝐚̂́𝐭 𝐂𝐚̉ 𝐋𝐞̣̂𝐧𝐡 𝐂𝐮̉𝐚 𝐁𝐨𝐭\n➣  /𝐦𝐞𝐧𝐮 𝐚𝐥𝐥\n➣   𝐆𝐮̛̉𝐢 𝐓𝐡𝐨̂𝐧𝐠 𝐓𝐢𝐧 𝐕𝐞̂̀ 𝐀𝐝𝐦𝐢𝐧 \n➣  /𝐜𝐚𝐥𝐥𝐚𝐝\n━━━━━━━━━━━━━━━━━━\n 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: fb.com/100026504781396
 handleCommand.commandThreadBanned=𝑁ℎ𝑜́𝑚 𝐵𝑎̣𝑛 đ𝑎̃ 𝑏𝑖̣ 𝑐𝑎̂́𝑚 𝑠𝑢̛̉ 𝑑𝑢̣𝑛𝑔 𝑙𝑒̣̂𝑛ℎ "%1"
 handleCommand.commandUserBanned=𝐵𝑎̣𝑛 đ𝑎̃ 𝑏𝑖̣ 𝑐𝑎̂́𝑚 𝑠𝑢̛̉ 𝑑𝑢̣𝑛𝑔 𝑙𝑒̣̂𝑛ℎ "%1"
 handleCommand.threadNotAllowNSFW=Nhóm của bạn không được phép sử dụng những lệnh NSFW
@@ -101,4 +101,4 @@ handleSchedule.exectuteError=Đã xảy ra lỗi không mong muốn trong lúc s
 
 # utils/index.js
 
-utils.throwError=( \ _ / )\n( • - • )\n(>🧠<)\n 𝑼 𝒍𝒂̀ 𝒕𝒓, 𝒅𝒖̀𝒏𝒈 𝒍𝒆̣̂𝒏𝒉 𝒄𝒖̃𝒏𝒈 𝒔𝒂𝒊 ,𝒔𝒖̛̉ 𝒅𝒖̣𝒏𝒈 %1𝒉𝒆𝒍𝒑 𝒉𝒐𝒂̣̆𝒄 %1𝒎𝒆𝒏𝒖 %2 đ𝒆̂̉ 𝒙𝒆𝒎 𝒍𝒊𝒔𝒕 𝒍𝒆̣̂𝒏𝒉.\n𝑵𝒆̂́𝒖 𝒉𝒐𝒏𝒈 𝒉𝒊𝒆̂̉𝒖 𝒕𝒉𝒊̀ 𝒍𝒊𝒆̂𝒏 𝒉𝒆̣̂ 𝒕𝒖𝒊 𝒒𝒖𝒂\n📌FB:https://www.facebook.com/100000161667225\n☎️️Zalo: 0329036401.\nLệnh bạn đang sử dụng không đúng cú pháp, vui lòng sử dụng %1help %2 để biết thêm chi tiết cách sử dụng
+utils.throwError=( \ _ / )\n( • - • )\n(>🧠<)\n 𝑼 𝒍𝒂̀ 𝒕𝒓, 𝒅𝒖̀𝒏𝒈 𝒍𝒆̣̂𝒏𝒉 𝒄𝒖̃𝒏𝒈 𝒔𝒂𝒊 ,𝒔𝒖̛̉ 𝒅𝒖̣𝒏𝒈 %1𝒉𝒆𝒍𝒑 𝒉𝒐𝒂̣̆𝒄 %1𝒎𝒆𝒏𝒖 %2 đ𝒆̂̉ 𝒙𝒆𝒎 𝒍𝒊𝒔𝒕 𝒍𝒆̣̂𝒏𝒉.\n𝑵𝒆̂́𝒖 𝒉𝒐𝒏𝒈 𝒉𝒊𝒆̂̉𝒖 𝒕𝒉𝒊̀ 𝒍𝒊𝒆̂𝒏 𝒉𝒆̣̂ 𝒕𝒖𝒊 𝒒𝒖𝒂\n📌FB:https://www.facebook.com/BVL.2008\n☎️️Zalo: 0562378893.\nLệnh bạn đang sử dụng không đúng cú pháp, vui lòng sử dụng %1help %2 để biết thêm chi tiết cách sử dụng

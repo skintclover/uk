@@ -1,58 +1,90 @@
+const request = require('request');
+
+const fs = global.nodemodule["fs-extra"]
+
 module.exports.config = {
+
   name: "ad",
+
   version: "1.0.0",
+
   hasPermssion: 0,
-  credits: "✨..✨",
-  description: "Kiểm tra thông tin admin .",
-  commandCategory: "Tiện ích",
+
+  credits: "JRT",
+
+  description: "Kiểm tra thông tin adminbot",
+
+  commandCategory: "Thông tin",
+
   usages: "adm",
-  cooldowns: 5,
+
+  cooldowns: 0,
+
   dependencies: {
-    "request":"",
-    "fs-extra":"",
-    "axios":""
-  }
+
+"request": ""
+
+}
+
 };
 
-module.exports.run = async function({ api,event,args,client,Users,Threads,__GLOBAL,Currencies }) {
-    var name = (await Users.getData(event.senderID)).name
-const axios = global.nodemodule["axios"];
-const request = global.nodemodule["request"];
-const fs = global.nodemodule["fs-extra"];
-  var link = [
-"https://i.imgur.com/K2YCQOp.mp4",
-];
-  var callback = () => api.sendMessage({body:`━━━━━━━━━━━━━━━━━━
-=== [ 𝗔𝗗𝗠𝗜𝗡 𝗕𝗢𝗧 ] ===
-━━━━━━━━━━━━━━━━━━
-👤 𝗧𝗲̂𝗻: 𝑵𝒈𝒖𝒚𝒆̂̃𝒏 𝑻𝒓𝒐̣𝒏𝒈 𝑻𝒊́𝒏
-🎟️ 𝗕𝗶𝗲̣̂𝘁 𝗱𝗮𝗻𝗵: ( 𝑵𝑻𝑻 )
-🌹  𝗧𝘂𝗼̂̉𝗶: 𝟏𝟒
-👫 𝗚𝗶𝗼̛́𝗶 𝘁𝗶́𝗻𝗵:  𝑵𝒂𝒎
-🗓️ 𝗦𝗶𝗻𝗵 𝗻𝗴𝗮̀𝘆: 𝟏𝟏-𝟏𝟎-𝟐𝟎𝟎𝟗
-🌟 𝗖𝗵𝗶𝗲̂̀𝘂 𝗰𝗮𝗼 𝟏𝒎𝟕
-💓 𝗠𝗼̂́𝗶 𝗾𝘂𝗮𝗻 𝗵𝗲̣̂: ....
-🎊 𝗤𝘂𝗲̂ 𝗾𝘂𝗮́𝗻: 𝑳𝒐𝒏𝒈 𝑨𝒏
-🏠 𝗡𝗼̛𝗶 𝗼̛̉: 𝑳𝒐𝒏𝒈 𝑨𝒏 
-💞 𝗖𝘂𝗻𝗴: 𝑻𝒉𝒊𝒆̂𝒏 𝑩𝒊̀𝒏𝒉
-💐 𝗚𝘂: 𝑫𝒖́ 𝒃𝒖̛̣ 
-🎀 𝗧𝗶́𝗻𝗵 𝗰𝗮́𝗰𝗵: 𝑪𝒖𝒕𝒊
-💻𝗖𝗼𝗻𝘁𝗮𝗰𝘁💻
-🎭 𝗭𝗮𝗹𝗼: 𝟎𝟑𝟐𝟗𝟎𝟑𝟔𝟒𝟎𝟏
-🌐 𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸: https://www.facebook.com/1712332674
-━━━━━━━━━━━━━━━━━━
- [👇] 𝗟𝘂̛𝘂 𝘆́ 𝗰𝗵𝗼 𝗰𝗮́𝗰 𝗾𝘁𝘃 𝘃𝗮̀ 𝘁𝘃 𝘁𝗿𝗼𝗻𝗴 𝗯𝗼𝘅: 
-➝ 𝗩𝘂𝗶 𝗹𝗼̀𝗻𝗴 𝗸𝗵𝗼̂𝗻𝗴 𝘀𝗽𝗮𝗺 𝗸𝗵𝗶 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 đ𝗲̂̉ 𝘁𝗿𝗮́𝗻𝗵 𝗱𝗶𝗲 𝗯𝗼𝘁
-➝ 𝗞𝗵𝗼̂𝗻𝗴 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗹𝗲̣̂𝗻𝗵 𝗻𝗵𝗶𝗲̂̀𝘂 𝗰𝘂̉𝗮 𝗹𝗲̣̂𝗻𝗵 đ𝗼́
-➝ đ𝘂̛̀𝗻𝗴 𝗰𝗵𝘂̛̉𝗶 𝗯𝗼𝘁 𝘃𝗶̀ 𝗻𝗼́ đ𝘂̛𝗼̛̣𝗰 𝗹𝗮̣̂𝗽 𝘁𝗿𝗶̀𝗻𝗵 𝘁𝘂̛̣ đ𝗼̣̂𝗻𝗴 𝗿𝗼̛̀𝗶 𝗯𝗼𝘅
-➝ đ𝘂̛̀𝗻𝗴 𝗿𝗲𝗽𝗼𝗿𝘁 𝗯𝗼𝘁 𝘃𝗶̀ 𝗻𝗼́ 𝗰𝘂𝘁𝗲 𝗹𝗮̆́𝗺 ><
-➝ 𝗡𝗲̂́𝘂 𝗯𝗼𝘁 𝗸𝗼 𝗵𝗼𝗮̣𝘁 đ𝗼̣̂𝗻𝗴 𝗵𝗮𝘆 𝗯𝗶̣ 𝗹𝗼̂̃𝗶 𝗵𝗮𝘆 𝗹𝗶𝗲̂𝗻 𝗵𝗲̣̂ 𝗾𝘂𝗮 𝘀𝗱𝘁 𝗵𝗼𝗮̣̆𝗰 𝗻𝗵𝗮̆́𝗻 𝘁𝗶𝗻 𝗺𝗲𝘀𝘀 đ𝗲̂̉ đ𝘂̛𝗼̛̣𝗰 𝗹𝗶𝗲̂𝗻 𝗵𝗲̣̂ 𝘁𝗿𝘂̛̣𝗰 𝘁𝗶𝗲̂́𝗽 𝘃𝗼̛́𝗶 𝗺𝗶̀𝗻𝗵
-=> 𝗬𝗲̂𝘂 𝗺𝗼̣𝗶 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝗻𝗵𝗶𝗲̂̀𝘂 𝗹𝗮̆́𝗺 <3 𝗵𝗮̃𝘆 đ𝗼̂̀𝗻𝗴 𝗵𝗮̀𝗻𝗵 𝗰𝘂̀𝗻𝗴 𝘃𝗼̛́𝗶 𝗯𝗼𝘁 𝘃𝗮̀ 𝗺𝗶̀𝗻𝗵 𝗻𝗵𝗲́ <3`,attachment: fs.createReadStream(__dirname + "/cache/ad.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/ad.mp4")); 
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/ad.mp4")).on("close",() => callback());
-   };
-   //tự edit body nhá ...=thay thông tin 
-   //Sen code lại th nên bớt soi 
-   //cách lấy ảnh gắn ở trên 
-   //B1 Truy cập https://imgur.com chọn newpost
-   //B2 Gắn ảnh từ máy tính lên đó hay điện thoại cx đc tùyq   //B3 Copy link như trên rồi thêm .jpg vào là done 
-   //Chúc thành công
+ 
+
+module.exports.run = async({api,event,args,Users,global,Currencies}) => {
+
+var callback = () => api.sendMessage(
+
+  {body:`[⚜️] 𝑻𝒉𝒐̂𝒏𝒈 𝑻𝒊𝒏 𝑨𝒅𝒎𝒊𝒏 𝑩𝒐𝒕 [⚜️]\n
+
+[👀] 𝗧𝗲̂𝗻: 𝑻𝒉𝒊𝒏𝒉 𝑫𝒂𝒕
+[💮] 𝗕𝗶𝗲̣̂𝘁 𝗱𝗮𝗻𝗵: ︵ßσsʂ⊰⊹κℯภ۸
+[❎] 𝗡𝗴𝗮̀𝘆 𝘁𝗵𝗮́𝗻𝗴 𝗻𝗮̆𝗺 𝘀𝗶𝗻𝗵: 𝟮𝟰/𝟬𝟵/𝟮𝟬𝟬𝟯
+[👤] 𝗚𝗶𝗼̛́𝗶 𝘁𝗶́𝗻𝗵: 𝗡𝗮𝗺
+[💫] 𝗖𝗵𝗶𝗲̂̀𝘂 𝗰𝗮𝗼 𝗰𝗮̂𝗻 𝗻𝗮̣̆𝗻𝗴: 𝟭𝗺𝟳𝟬 𝘅 𝟱𝟴𝗸𝗴
+[❤️] 𝗧𝗲̂𝗻 𝗱𝘂𝘆𝗲̂𝗻 𝗽𝗵𝗮̣̂𝗻: 𝗠𝗶𝘂 𝗵𝗮𝘆 𝗱𝗼̂̃𝗶 💖
+[💥] 𝗡𝗴𝗮̀𝘆 𝘀𝗶𝗻𝗵: 𝟮𝟰
+[💘] 𝗠𝗼̂́𝗶 𝗾𝘂𝗮𝗻 𝗵𝗲̣̂: Đ𝗮̃ 𝗰𝗼́ 𝗰𝗵𝘂̉ (𝗠𝗶𝘂)
+[🌎] 𝗤𝘂𝗲̂ 𝗾𝘂𝗮́𝗻: Đ𝗼̂̀𝗻𝗴 𝗡𝗮𝗶
+[🌸] 𝗧𝗶́𝗻𝗵 𝗰𝗮́𝗰𝗵: 𝗛𝗼̀𝗮 𝗱𝗼̂̀𝗻𝗴, 𝗻𝗮̆𝗻𝗴 𝗻𝗼̂̉, 𝗱𝘂̛́𝘁 𝗸𝗵𝗼𝗮́𝘁, 𝘁𝗵𝗮̂𝗻 𝘁𝗵𝗶𝗲̣̂𝗻 𝘃𝗮̀ 𝘁𝗿𝗮̂̀𝗺 𝘁𝗶́𝗻𝗵
+[🌀] 𝗦𝗼̛̉ 𝘁𝗵𝗶́𝗰𝗵: 𝗧𝗵𝗶́𝗰𝗵 𝗰𝗮́𝗶 𝗱𝗲̣𝗽, 𝗱𝗶 𝗽𝗵𝘂̛𝗼̛̣𝘁, 𝗴𝗶𝗮𝗼 𝗹𝘂̛𝘂 𝗰𝗮 𝗵𝗮́𝘁, 𝘁𝗵𝘂̛𝗼̛̉𝗻𝗴 𝘁𝗵𝘂̛́𝗰 𝗰𝗮́𝗰 𝗺𝗼́𝗻 𝗮̂̉𝗺 𝘁𝗵𝘂̛̣𝗰 𝗸𝗵𝗮́𝗰 𝗻𝗵𝗮𝘂
+
+====[☎️] 𝗖𝗢𝗡𝗧𝗔𝗖𝗧 [📱]====
+
+[👉] 𝗜𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻:
+[☎] 𝗦𝗗𝗧 & 𝗭𝗮𝗹𝗼: 𝟬𝟵𝟮𝟰𝟭𝟯𝟬𝟲𝟮𝟵
+[🌐] 𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸: https://www.facebook.com/th.datdat
+[⛱] 𝗧𝗶𝗸𝗧𝗼𝗸: https://www.tiktok.com/@thinhdat31
+[⛲] 𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺: 𝗵𝘁𝘁𝗽𝘀://𝘄𝘄𝘄.𝗶𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺.𝗰𝗼𝗺/
+[🔎] 𝗧𝘄𝗶𝘁𝘁𝗲𝗿: 𝗵𝘁𝘁𝗽𝘀://𝘁𝘄𝗶𝘁𝘁𝗲𝗿.𝗰𝗼𝗺/
+[📋] 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺: 
+[🎬] 𝗬𝗼𝘂𝘁𝘂𝗯𝗲: 𝗵𝘁𝘁𝗽𝘀://𝘄𝘄𝘄.𝘆𝗼𝘂𝘁𝘂𝗯𝗲.𝗰𝗼𝗺
+[✉️] 𝗘𝗺𝗮𝗶𝗹: 𝘃𝗶𝘁𝗰𝗼𝗻𝗯𝗲𝗯𝘂@𝗴𝗺𝗮𝗶𝗹.𝗰𝗼𝗺 || 
+
+====[🏩] 𝗗𝗢𝗡𝗔𝗧𝗘 [💒]====
+
+[💵] 𝗠𝗼𝗺𝗼: 𝟬𝟵𝟮𝟰𝟭𝟯𝟬𝟲𝟮𝟵
+[💵] 𝗣𝗹𝗮𝘆𝗲𝗿 𝗗𝘂𝗼: 
+[💵] 𝗣𝗹𝗮𝘆𝗲𝗿 𝗗𝘂𝗼 𝗣𝗮𝘆: 
+[💵] 𝗠𝗯𝗯𝗮𝗻𝗸: 𝟬𝟵𝟮𝟰𝟭𝟯𝟬𝟲𝟮𝟵
+[💵] 𝗭𝗮𝗹𝗼𝗣𝗮𝘆: 𝟬𝟵𝟮𝟰𝟭𝟯𝟬𝟲𝟮𝟵
+
+====[📝] 𝗣𝗥𝗢𝗕𝗟𝗘𝗠 [📝]====
+
+[❗] 𝗠𝗼̣𝗶 𝘁𝗵𝗮̆́𝗰 𝗺𝗮̆́𝗰 𝗵𝗮𝘆 𝗯𝗼𝘁 𝗸𝗵𝗼̂𝗻𝗴 𝗵𝗼𝗮̣𝘁 𝗱𝗼̣̂𝗻𝗴 𝗰𝗼́ 𝘁𝗵𝗲̂̉ 𝗵𝗼̉𝗶 𝘁𝗿𝘂̛̣𝗰 𝘁𝗶𝗲̂́𝗽 𝗮𝗱𝗺𝗶𝗻 𝘁𝗵𝗲𝗼 𝗰𝗮́𝗰 𝗹𝗶𝗻𝗸 𝗼̛̉ 𝘁𝗿𝗲̂𝗻 . 𝗡𝗴𝗵𝗶𝗲̂𝗺 𝗰𝗮̂́𝗺 𝗰𝗮́𝗰 𝗵𝗮̀𝗻𝗵 𝘃𝗶 𝗸𝗶𝗰𝗸 𝗯𝗼𝘁 𝗸𝗵𝗼̂𝗻𝗴 𝗯𝗮́𝗼 𝘁𝗿𝘂̛𝗼̛́𝗰 𝗼𝗿 𝗰𝗵𝘂̛̉𝗶 𝗯𝗼𝘁 𝗵𝗮𝘆 𝘅𝘂́𝗰 𝗽𝗵𝗮̣𝗺 𝗮𝗱𝗺𝗶𝗻 𝗯𝗼𝘁 
+[📌] 𝗛𝗮̃𝘆 𝗱𝗼̂̀𝗻𝗴 𝗵𝗮̀𝗻𝗵 𝗰𝘂̀𝗻𝗴 𝗕𝗢𝗧 ︵ßσsʂ⊰⊹κℯภ۸ 𝘃𝗮̀ 𝗺𝗶̀𝗻𝗵 𝗻𝗵𝗲́. 𝗖𝗮̉𝗺 𝗼̛𝗻 𝗺𝗼̣𝗶 𝗻𝗴𝘂̛𝗼̛̀𝗶 <𝟯
+
+✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+
+[📝] 𝗕𝗼𝘁 𝗱𝘂̛𝗼̛̣𝗰 𝗱𝗶𝗲̂̀𝘂 𝗵𝗮̀𝗻𝗵 𝗯𝗼̛̉𝗶 ︵ßσsʂ⊰⊹κℯภ۸`,
+
+    attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
+
+    fs.unlinkSync(__dirname + "/cache/1.png"));  
+
+      return request(
+
+        encodeURI(`https://graph.facebook.com/${100011587089449}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).pipe(
+
+fs.createWriteStream(__dirname+'/cache/1.png')).on('close',() => callback());
+
+       };

@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.run = async function({ api, event })
 {
   const fs = global.nodemodule["fs-extra"];
-  const permission = ["1712332674"];
+  const permission = ["100026504781396"];
 
 
 	if (!permission.includes(event.senderID)) return api.sendMessage("cút ", event.threadID, event.messageID);

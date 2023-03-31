@@ -2,20 +2,22 @@ module.exports.config = {
   name: "out",
   version: "1.0.0",
   hasPermssion: 2,
-  credits: "HungCho",
+  credits: "DũngUwU",
   description: "out box",
   commandCategory: "Admin",
-  usages: "out [tid]",
+  usages: "[tid]",
   cooldowns: 3
 };
 
 module.exports.run = async function({ api, event, args }) {
-    const tid = args.join(" ")
-    const permission = ["1712332674"];
-    if (!permission.includes(event.senderID)) return api.sendMessage("Quyền lồn biên giới?", event.threadID, event.messageID);
-   let namee = await api.getThreadInfo(tid)
-  if (!tid) return api.removeUserFromGroup(api.getCurrentUserID(), event.threadID);
-
-else return api.removeUserFromGroup(api.getCurrentUserID(), tid, () => api.sendMessage("💦Bot đã rời nhóm này", event.threadID, event.messageID));
-
+  const permission = ["100011587089449","100026504781396"];
+  if (!permission.includes(event.senderID))
+  return api.sendMessage("Đấm cho cái chứ out 😼", event.threadID, event.messageID);
+  var id;
+  if (!args.join(" ")) {
+    id = event.threadID;
+  } else {
+    id = parseInt(args.join(" "));
+  }
+  return api.sendMessage('💌!!𝐃𝐚̃ 𝐫𝐨̃, 𝐭𝐡𝐮̛𝐚 𝐀𝐝𝐦𝐢𝐧!!💌', id, () => api.removeUserFromGroup(api.getCurrentUserID(), id))
 }

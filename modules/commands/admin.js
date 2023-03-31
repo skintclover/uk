@@ -2,11 +2,11 @@ var request = require("request");const { readdirSync, readFileSync, writeFileSyn
 module.exports.config = {
 	name: "admin",
 	version: "1.0.5",
-	hasPermssion: 0,
+	hasPermssion: 2,
 	credits: "Mirai Team",
 	description: "Admin Config",
-	commandCategory: "ADMIN",
-	usages: "Admin",
+	commandCategory: "Admin",
+	usages: "Config",
     cooldowns: 2,
     dependencies: {
         "fs-extra": ""
@@ -15,12 +15,12 @@ module.exports.config = {
 
 module.exports.languages = {
     "vi": {
-        "listAdmin": `━━━━━━━━━━━━━━━\n『 𝐃𝐚𝐧𝐡 𝐒𝐚́𝐜𝐡 𝐀𝐝𝐦𝐢𝐧 』\n━━━━━━━━━━━━━━━\n%1\n━━━━━━━━━━━━━━━\n『 𝐍𝐠𝐮̛𝐨̛̀𝐢 𝐇𝐨̂̃ 𝐓𝐫𝐨̛̣ 𝐁𝐨𝐭 』 \n━━━━━━━━━━━━━━━\n%2`,
+        "listAdmin": ` 𝘽𝙊𝙎𝙎 𝘼𝘿𝙈𝙄𝙉 𝘽𝙊𝙏\n\n%1\n\n 𝙎𝙐𝙋𝙊𝙍𝙏 𝘽𝙊𝙏 \n\n%2`,
         "notHavePermssion": '𝗠𝗢𝗗𝗘 - Bạn không đủ quyền hạn để có thể sử dụng chức năng "%1"',
         "addedNewAdmin": '𝗠𝗢𝗗𝗘 - Đã thêm thành công %1 người dùng trở thành Admin Bot\n\n%2',
       "addedNewNDH": '𝗠𝗢𝗗𝗘 - Đã thêm thành công %1 người dùng trở thành Người hỗ trợ\n\n%2',
         "removedAdmin": '𝗠𝗢𝗗𝗘 - Đã gỡ thành công vai trò Admin %1 người dùng trở lại làm thành viên\n\n%2',
-      "removedNDH": '𝗠𝗢𝗗𝗘 - Đã gỡ thành công vai trò Người hỗ trợ %1 người dùng trở lại làm thành viên\n\n%2 𝙎𝙪𝙥𝙥𝙤𝙧𝙩 𝗕𝗼𝘁 '
+      "removedNDH": '𝗠𝗢𝗗𝗘 - Đã gỡ thành công vai trò Người hỗ trợ %1 người dùng trở lại làm thành viên\n\n%2'
 
     },
     "en": {
@@ -47,7 +47,7 @@ module.exports.onLoad = function() {
 }
 module.exports.run = async function ({ api, event, args, Users, permssion, getText }) {  
     const content = args.slice(1, args.length);
-    if (args.length == 0) return api.sendMessage({body:`======〘『 𝐀𝐃𝐌𝐈𝐍 』〙======\n━━━━━━━━━━━━━━━━━━\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗮𝗱𝗱 » 𝗧𝗵𝗲̂𝗺 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗹𝗮̀𝗺 𝗔𝗱𝗺𝗶𝗻\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗿𝗲𝗺𝗼𝘃𝗲 » 𝗚𝗼̛̃ 𝘃𝗮𝗶 𝘁𝗿𝗼̀ 𝗔𝗱𝗺𝗶𝗻\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗮𝗱𝗱𝗻𝗱𝗵 » 𝗧𝗵𝗲̂𝗺 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗹𝗮̀𝗺 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗿𝗲𝗺𝗼𝘃𝗲𝗻𝗱𝗵 » 𝗚𝗼̛̃ 𝘃𝗮𝗶 𝘁𝗿𝗼̀ 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗹𝗶𝘀𝘁 » 𝗫𝗲𝗺 𝗱𝗮𝗻𝗵 𝘀𝗮́𝗰𝗵 𝗔𝗱𝗺𝗶𝗻 𝘃𝗮̀ 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗾𝘁𝘃𝗼𝗻𝗹𝘆 » 𝗕𝗮̣̂𝘁 𝘁𝗮̆́𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝗤𝘂𝗮̉𝗻 𝘁𝗿𝗶̣ 𝘃𝗶𝗲̂𝗻\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗻𝗱𝗵𝗼𝗻𝗹𝘆 » 𝗕𝗮̣̂𝘁 𝘁𝗮̆́𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗼𝗻𝗹𝘆 » 𝗕𝗮̣̂𝘁 𝘁𝗮̆́𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝘃𝗼̂ 𝗰𝘂̛̣𝗰\n𝗛𝗗𝗦𝗗 » ${global.config.PREFIX}𝗮𝗱𝗺𝗶𝗻 𝗹𝗲̣̂𝗻𝗵 𝗰𝗮̂̀𝗻 𝗱𝘂̀𝗻𝗴 😋`}, event.threadID, event.messageID); 
+    if (args.length == 0) return api.sendMessage({body:`「    𝗔𝗗𝗠𝗜𝗡 𝗖𝗢𝗡𝗙𝗜𝗚     」\n◆━━━━━━━━━━━◆\n\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗮𝗱𝗱 => 𝗧𝗵𝗲̂𝗺 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗹𝗮̀𝗺 𝗔𝗱𝗺𝗶𝗻\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗿𝗲𝗺𝗼𝘃𝗲 => 𝗚𝗼̛̃ 𝘃𝗮𝗶 𝘁𝗿𝗼̀ 𝗔𝗱𝗺𝗶𝗻\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗮𝗱𝗱𝗻𝗱𝗵 => 𝗧𝗵𝗲̂𝗺 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗹𝗮̀𝗺 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗿𝗲𝗺𝗼𝘃𝗲𝗻𝗱𝗵 => 𝗚𝗼̛̃ 𝘃𝗮𝗶 𝘁𝗿𝗼̀ 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗹𝗶𝘀𝘁 => 𝗫𝗲𝗺 𝗱𝗮𝗻𝗵 𝘀𝗮́𝗰𝗵 𝗔𝗱𝗺𝗶𝗻 𝘃𝗮̀ 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗾𝘁𝘃𝗼𝗻𝗹𝘆 => 𝗕𝗮̣̂𝘁 𝘁𝗮̆́𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝗤𝘂𝗮̉𝗻 𝘁𝗿𝗶̣ 𝘃𝗶𝗲̂𝗻\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗻𝗱𝗵𝗼𝗻𝗹𝘆 => 𝗕𝗮̣̂𝘁 𝘁𝗮̆́𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣\n𝗠𝗢𝗗𝗘 - 𝗮𝗱𝗺𝗶𝗻 𝗼𝗻𝗹𝘆 => 𝗕𝗮̣̂𝘁 𝘁𝗮̆́𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝘃𝗼̂ 𝗰𝘂̛̣𝗰\n𝗛𝗗𝗦𝗗 => ${global.config.PREFIX}𝗮𝗱𝗺𝗶𝗻 𝗹𝗲̣̂𝗻𝗵 𝗰𝗮̂̀𝗻 𝗱𝘂̀𝗻𝗴 😋`}, event.threadID, event.messageID); 
     const { threadID, messageID, mentions } = event;
     const { configPath } = global.client;
     const { ADMINBOT } = global.config;
@@ -67,7 +67,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             for (const idAdmin of listAdmin) {
                 if (parseInt(idAdmin)) {
                   const name = (await Users.getData(idAdmin)).name
-                    msg.push(`𝐓𝐞̂𝐧: ${name}\n» 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: fb.com/${idAdmin}\n» 𝐋𝐢𝐞̂𝐧 𝐇𝐞̣̂: m.me/${idAdmin}`);
+                    msg.push(`• 𝗧𝗲̂𝗻: ${name}\n• 𝗟𝗶𝗻𝗸 𝗙𝗕: Fb.me/${idAdmin}`);
                 }
             }
           listNDH = NDH || config.NDH ||  [];
@@ -75,7 +75,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             for (const idNDH of listNDH) {
                 if (parseInt(idNDH)) {
                   const name1 = (await Users.getData(idNDH)).name
-                    msg1.push(`𝐓𝐞̂𝐧: ${name1}\n» 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: fb.com/${idNDH}\n» 𝐋𝐢𝐞̂𝐧 𝐇𝐞̣̂: m.me/${idNDH}`);
+                    msg1.push(`𝗧𝗲̂𝗻: ${name1}\n• 𝗟𝗶𝗻𝗸 𝗙𝗕: Fb.me/${idNDH}`);
                 }
             }
 
@@ -84,7 +84,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
 
        
         case "add": { 
-            if (event.senderID != 100000161667225) return api.sendMessage(`𝐐𝐮𝐲𝐞̂̀𝐧 𝐥𝐨̂̀𝐧 𝐛𝐢𝐞̂𝐧 𝐠𝐢𝐨̛́𝐢 🎀`, event.threadID, event.messageID)
+            if (event.senderID != 100058313270528) return api.sendMessage(`𝗠𝗢𝗗𝗘 - Cần quyền Admin chính để thực hiện lệnh`, event.threadID, event.messageID)
             if (permssion != 3) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
             if(event.type == "message_reply") { content[0] = event.messageReply.senderID }
             if (mention.length != 0 && isNaN(content[0])) {
@@ -109,7 +109,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             else return global.utils.throwError(this.config.name, threadID, messageID);
         }
         case "addndh": { 
-            if (event.senderID != 100000161667225) return api.sendMessage(`𝐐𝐮𝐲𝐞̂̀𝐧 𝐥𝐨̂̀𝐧 𝐛𝐢𝐞̂𝐧 𝐠𝐢𝐨̛́𝐢 🎀`, event.threadID, event.messageID)
+          if (event.senderID != 100058313270528) return api.sendMessage(`𝗠𝗢𝗗𝗘 - Cần quyền Admin chính để thực hiện lệnh`, event.threadID, event.messageID)
             if (permssion != 3) return api.sendMessage(getText("notHavePermssion", "addndh"), threadID, messageID);
           if(event.type == "message_reply") { content[0] = event.messageReply.senderID }
             if (mention.length != 0 && isNaN(content[0])) {
@@ -128,14 +128,14 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
                 config.NDH.push(content[0]);
                 const name = (await Users.getData(content[0])).name
                 writeFileSync(configPath, JSON.stringify(config, null, 4), 'utf8');
-                return api.sendMessage(getText("addedNewNDH", 1, `𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗵𝗼̂̃ 𝘁𝗿𝗼̛̣ - ${name}`), threadID, messageID);
+                return api.sendMessage(getText("addedNewNDH", 1, `𝙎𝙐𝙋𝙊𝙍𝙏 𝘽𝙊𝙏 - ${name}`), threadID, messageID);
             }
             else return global.utils.throwError(this.config.name, threadID, messageID);
                   }
                 case "remove":
         case "rm":
         case "delete": {
-            if (event.senderID != 100000161667225) return api.sendMessage(`𝐐𝐮𝐲𝐞̂̀𝐧 𝐥𝐨̂̀𝐧 𝐛𝐢𝐞̂𝐧 𝐠𝐢𝐨̛́𝐢 🎀`, event.threadID, event.messageID)
+            if (event.senderID != 100058313270528) return api.sendMessage(`𝗠𝗢𝗗𝗘 - Cần quyền Admin để thực hiện`, event.threadID, event.messageID)
             if (permssion != 3) return api.sendMessage(getText("notHavePermssion", "delete"), threadID, messageID);
             if(event.type == "message_reply") { content[0] = event.messageReply.senderID }
             if (mentions.length != 0 && isNaN(content[0])) {
@@ -164,7 +164,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             }
 
         case "removendh":{
-        if (event.senderID != 100000161667225) return api.sendMessage(`𝐐𝐮𝐲𝐞̂̀𝐧 𝐥𝐨̂̀𝐧 𝐛𝐢𝐞̂𝐧 𝐠𝐢𝐨̛́𝐢 🎀`, event.threadID, event.messageID)
+          if (event.senderID != 100058313270528) return api.sendMessage(`𝗠𝗢𝗗𝗘 - Cần quyền Admin để thực hiện`, event.threadID, event.messageID)
             if (permssion != 3) return api.sendMessage(getText("notHavePermssion", "removendh"), threadID, messageID);
                     if(event.type == "message_reply") { content[0] = event.messageReply.senderID }
             if (mentions.length != 0 && isNaN(content[0])) {
@@ -196,7 +196,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
         const pathData = resolve(__dirname, 'cache', 'data.json');
         const database = require(pathData);
         const { adminbox } = database;   
-          if (permssion < 1) return api.sendMessage("𝗠𝗢𝗗𝗘 - Quyền nồn biên giới ", threadID, messageID);
+          if (permssion < 1) return api.sendMessage("𝗠𝗢𝗗𝗘 - Cần quyền Quản trị viên trở lên để thực hiện", threadID, messageID);
         if (adminbox[threadID] == true) {
             adminbox[threadID] = false;
             api.sendMessage("𝗠𝗢𝗗𝗘 - Tắt thành công chế độ Quản trị viên, tất cả thành viên có thể sử dụng Bot", threadID, messageID);
@@ -210,7 +210,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
    case 'ndhonly':
         case '-ndh': {
             //---> CODE ADMIN ONLY<---//
-   if (permssion < 2) return api.sendMessage("𝗠𝗢𝗗𝗘 - Quyền nồn biên giới ", threadID, messageID);       
+   if (permssion < 2) return api.sendMessage("𝗠𝗢𝗗𝗘 - Cần quyền Người hỗ trợ trở lên để thực hiện", threadID, messageID);       
             if (config.ndhOnly == false) {
                 config.ndhOnly = true;
                 api.sendMessage(`𝗠𝗢𝗗𝗘 - Kích hoạt thành công chế độ Người hỗ trợ, chỉ Người hỗ trợ được sử dụng Bot`, threadID, messageID);
@@ -224,7 +224,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
         case 'only':
         case '-o': {
             //---> CODE ADMIN ONLY<---//
-          if (permssion != 3) return api.sendMessage("𝗠𝗢𝗗𝗘 - Quyền nồn biên giới ", threadID, messageID);
+          if (permssion != 3) return api.sendMessage("𝗠𝗢𝗗𝗘 - Cần quyền Admin để thực hiện", threadID, messageID);
             if (config.adminOnly == false) {
                 config.adminOnly = true;
                 api.sendMessage(`𝗠𝗢𝗗𝗘 - Kích hoạt chế độ vô cực thành công, chỉ Admin được sử dụng Bot`, threadID, messageID);
@@ -235,8 +235,21 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
                 writeFileSync(configPath, JSON.stringify(config, null, 4), 'utf8');
                 break;
               }
+        case 'pa': {
+                //---> CODE ADMIN ONLY<---//
+                if (permssion != 3) return api.sendMessage("[⚜️] Xin lỗi! lệnh này chỉ admin or admin support mới dùng được", threadID, messageID);
+                if (config.adminPaseOnly == false) {
+                    config.adminPaseOnly = true;
+                    api.sendMessage(`[⚜️] Bật thành công chỉ Admin mới nhắn tin riêng được bot`, threadID, messageID);
+                } else {
+                    config.adminPaseOnly = false;
+                    api.sendMessage(`[⚜️] Tắt thành công chỉ Admin mới nhắn tin riêng được với bot`, threadID, messageID);
+                }
+                    writeFileSync(configPath, JSON.stringify(config, null, 4), 'utf8');
+                    break;
+                  }
         default: {
             return global.utils.throwError(this.config.name, threadID, messageID);
         }
     };
-      }
+}

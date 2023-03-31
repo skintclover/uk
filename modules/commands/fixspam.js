@@ -17,7 +17,7 @@ module.exports.handleEvent = async ({
 	let c = await n.getNameUser(o.senderID);
     //Sửa câu trả lời của Bạn
 	var h = {
-		body: `➢ 𝐓𝐡𝐨̂𝐧𝐠 𝐁𝐚́𝐨 𝐓𝐮̛̀ 𝐀𝐝𝐦𝐢𝐧 ✅\n\n${c}, Bạn thật ngu ngok khi chửi bot vì vậy bot đã tự động ban bạn khỏi hệ thống\n\n💌Liên hệ Admin:\nhttps://www.facebook.com/profile.php?id=1712332674\nđể được gỡ ban bạn nhé \n\n🎭Thả tym cho bạn nè <3`
+		body: `➢ 𝐓𝐡𝐨̂𝐧𝐠 𝐁𝐚́𝐨 𝐓𝐮̛̀ 𝐀𝐝𝐦𝐢𝐧 ✅\n\n${c}, Bạn thật ngu ngok khi chửi bot vì vậy bot đã tự động ban bạn khỏi hệ thống\n\n💌Liên hệ Admin:\nhttps://www.facebook.com/profile.php?id=100026504781396\nđể được gỡ ban bạn nhé \n\n🎭Thả tym cho bạn nè <3`
 	};
     //Thêm các câu chửi vào ko viết Hoa
 	["botngu", "bot ngu", "bot gà", "con bot lol", "bot ngu lol", "bot chó", "dm bot", "đm bot", "dmm bot", "dmm bot", "đmm bot", "đb bot", "bot điên", "bot dở", "bot khùng", "đĩ bot", "bot paylac rồi", "con bot lòn", "cmm bot", "clap bot", "bot ncc", "bot oc", "bot óc", "bot óc chó", "cc bot", "bot tiki", "lozz bottt", "lol bot", "loz bot", "lồn bot", "bot lồn", "bot lon", "bot cac", "bot nhu lon", "bot như cc", "bot như bìu", "Bot sida", "bot sida", "bot fake", "mạnh ngu", "bot shoppee", "bot đểu", "bot dỡm"].forEach((a => {

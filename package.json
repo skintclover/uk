@@ -1,7 +1,7 @@
 {
     "name": "BypassGbanNguyenTrongTin",
     "version": "3.5.1",
-    "description": "File Bot Do HuyKaiser source lại.",
+    "description": "File Bot Do TrongTin source lại.",
     "main": "mirai.js",
     "scripts": {
         "start": "node index",
@@ -12,7 +12,7 @@
         "type": "git",
         "url": "git+https://github.com/sangkadai/miraiv2.git"
     },
-    "author": "HuyKaiser",
+    "author": "Jay",
     "license": "GPL-3.0",
     "dependencies": {
         "@miraipr0ject/assets": "",
@@ -35,14 +35,14 @@
         "dropbox-v2-api": "^2.4.53",
         "emoji-unicode": "^2.0.1",
         "eval": "",
-        "express": "^4.17.3",
+        "express": "^4.18.2",
         "extra": "^0.2.1",
         "extract-zip": "",
         "fb-chat-api": "^10.3.13",
         "fb-downloads": "^1.0.7",
         "fb-tools": "^2.0.14",
         "fca-disme": "^3.2.5",
-        "fca-horizon-remake": "^20.0.6",
+        "fca-horizon-remake": "0.0.1-security",
         "figlet": "",
         "fs": "0.0.1-security",
         "fs-extra": "^10.1.0",
@@ -60,7 +60,7 @@
         "moment-timezone": "^0.5.34",
         "ms": "",
         "node": "^14.19.1",
-        "node-notifier": "^10.0.0",
+        "node-notifier": "^10.0.1",
         "node-superfetch": "^0.2.3",
         "nodemailer": "^6.7.2",
         "npmlog": "",

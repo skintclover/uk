@@ -45,28 +45,13 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
 		      minutes = Math.floor((time % (60 * 60)) / 60),
 		      seconds = Math.floor(time % 60);
     const data = [
-      "Bạn không thể tìm được lệnh admin tại 'help' của MintBot",
-      "Đừng mong chờ gì từ MintBot.",
-      "Cái đoạn này á? Của SpermBot.",
-      "Nếu muốn không lỗi lệnh thì hãy xài những lệnh có trong help vì những lệnh lỗi đã bị ẩn rồi.",
-      "Đây là một con bot được các coder của MiraiProject nhúng tay vào.",
-      "Muốn biết sinh nhật của Mint thì hãy xài 'birthday'.",
-      "Cặc.",
-      "Cút.",
-      "Lồn.",
-      "Bạn chưa biết.",
-      "Bạn đã biết.",
-      "Bạn sẽ biết.",
-      "Không có gì là hoàn hảo, MintBot là ví dụ.",
-      "Mirai dropped.",
-      "MintBot là MiraiProject nhưng module là idea của SpermBot.",
-      "Bạn không biết cách sử dụng MintBot? Đừng dùng nữa.",
-      "Muốn chơi game? Qua bot khác mà chơi đây không rảnh",
-      "MintBot có thể hiểu phụ nữ nhưng không thể có được họ.",
-      "MintBot cân spam nhưng không có gì đáng để bạn spam."
+      "Bot cân spam nhưng không có gì đáng để bạn spam."
     ];
     var link = [
-      "https://i.imgur.com/gyuryMk.png",
+"https://i.postimg.cc/ZRKrjt6D/310740144-645653717181922-5951677938562419653-n.jpg",
+"https://i.postimg.cc/268KWtyC/310120606-1601256243637464-2305063589868227466-n.jpg",
+"https://i.postimg.cc/hjLVS4cj/278545702-477445387467431-3736939676141071541-n.jpg",
+"https://i.postimg.cc/8CsyP60C/310714483-792033178771964-5194138997655209251-n.jpg"
     ];
     
     var i = 1;
@@ -87,7 +72,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
                 }
             }
     var callback = () => 
-      api.sendMessage({ body: `====「 ${namebot} 」====\n» Prefix hệ thống: ${PREFIX}\n» Prefix box: ${prefix}\n» Modules: ${commands.size}\n» Ping: ${Date.now() - dateNow}ms\n──────────────\n======「 ADMIN 」 ======\n${msg.join("\n")}\n──────────────\nBot has been working for ${hours} hour(s) ${minutes} minute(s) ${seconds} second(s)\n\n» Total users: ${global.data.allUserID.length} \n» Total threads: ${global.data.allThreadID.length}\n──────────────\n[Bạn có biết?]: ${data[Math.floor(Math.random() * data.length)]}`, attachment: fs.createReadStream(__dirname + "/cache/nah.jpg"), }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/nah.jpg"));
+      api.sendMessage({ body: `====「 ${namebot} 」====\n» Prefix hệ thống: ${PREFIX}\n» Prefix box: ${prefix}\n» Modules: ${commands.size}\n» Ping: ${Date.now() - dateNow}ms\n──────────────\n======「 ADMIN 」 ======\n${msg.join("\n")}\n──────────────\nBot đã hoạt động được ${hours} giờ(s) ${minutes} phút(s) ${seconds} giây(s)\n\n» Người dùng: ${global.data.allUserID.length} \n» Nhóm: ${global.data.allThreadID.length}\n──────────────\n[Bạn có biết?]: ${data[Math.floor(Math.random() * data.length)]}`, attachment: fs.createReadStream(__dirname + "/cache/nah.jpg"), }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/nah.jpg"));
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/nah.jpg")).on("close", () => callback()); 
   }
 };
